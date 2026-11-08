@@ -41,9 +41,9 @@ screen gameplay_hud():
                 hbox:
                     spacing 12
                     yalign 0.5
-                    text "{font=fonts/DejaVuSans.ttf}❖{/font} [current_chapter_title]" font "fonts/LiberationSerif-Bold.ttf" size 15 color "#ebb963" yalign 0.5
+                    text "{font=fonts/DejaVuSans.ttf}❖{/font} [current_chapter_title!t]" font "fonts/LiberationSerif-Bold.ttf" size 15 color "#ebb963" yalign 0.5
                     text "•" size 14 color "#516b78" yalign 0.5
-                    text "[current_location_name]" size 14 color "#bfd0dc" yalign 0.5
+                    text "[current_location_name!t]" size 14 color "#bfd0dc" yalign 0.5
 
                 # Right: Tether Pill + RPG Menu Shortcuts
                 hbox:
@@ -51,14 +51,14 @@ screen gameplay_hud():
                     spacing 12
                     yalign 0.5
 
-                    text "Tether [tether]%" size 14 font "fonts/Roboto-Bold.ttf" color ("#7ec876" if tether >= 50 else "#e06c75") yalign 0.5
-                    text "Crowns: [brass_crowns]" size 14 color "#ebb963" yalign 0.5
+                    text _("Tether [tether]%") size 14 font "fonts/Roboto-Bold.ttf" color ("#7ec876" if tether >= 50 else "#e06c75") yalign 0.5
+                    text _("Crowns: [brass_crowns]") size 14 color "#ebb963" yalign 0.5
                     text "|" size 14 color "#3a505d" yalign 0.5
 
-                    textbutton "Status" action ShowMenu("character_status_screen") text_size 14 text_idle_color "#b4c8d6" text_hover_color "#ebb963" yalign 0.5
-                    textbutton "Bonds" action ShowMenu("relationships_screen") text_size 14 text_idle_color "#b4c8d6" text_hover_color "#ebb963" yalign 0.5
-                    textbutton "Journal" action ShowMenu("journal_screen") text_size 14 text_idle_color "#b4c8d6" text_hover_color "#ebb963" yalign 0.5
-                    textbutton "Satchel" action ShowMenu("inventory_screen") text_size 14 text_idle_color "#b4c8d6" text_hover_color "#ebb963" yalign 0.5
+                    textbutton _("Status") action ShowMenu("character_status_screen") text_size 14 text_idle_color "#b4c8d6" text_hover_color "#ebb963" yalign 0.5
+                    textbutton _("Bonds") action ShowMenu("relationships_screen") text_size 14 text_idle_color "#b4c8d6" text_hover_color "#ebb963" yalign 0.5
+                    textbutton _("Journal") action ShowMenu("journal_screen") text_size 14 text_idle_color "#b4c8d6" text_hover_color "#ebb963" yalign 0.5
+                    textbutton _("Satchel") action ShowMenu("inventory_screen") text_size 14 text_idle_color "#b4c8d6" text_hover_color "#ebb963" yalign 0.5
 
 
 ## Animated Feedback Toast ----------------------------------------------------
@@ -103,13 +103,13 @@ screen chapter_title_card(chap_label, chap_name, epigraph):
             yalign 0.48
             spacing 14
 
-            text chap_label:
+            text tr(chap_label):
                 font "fonts/Roboto-Bold.ttf"
                 size 17
                 color "#7ec876"
                 xalign 0.5
 
-            text chap_name:
+            text tr(chap_name):
                 font "fonts/LiberationSerif-Bold.ttf"
                 size 46
                 color "#f2f5f8"
@@ -117,7 +117,7 @@ screen chapter_title_card(chap_label, chap_name, epigraph):
 
             add Solid("#ebb963") xsize 220 ysize 2 xalign 0.5
 
-            text epigraph:
+            text tr(epigraph):
                 font "fonts/LiberationSerif-Italic.ttf"
                 size 20
                 color "#b5c6d4"
@@ -125,4 +125,4 @@ screen chapter_title_card(chap_label, chap_name, epigraph):
                 text_align 0.5
                 xmaximum 780
 
-        text "Click anywhere to continue" size 13 color "#607382" xalign 0.5 yalign 0.92
+        text _("Click anywhere to continue") size 13 color "#607382" xalign 0.5 yalign 0.92

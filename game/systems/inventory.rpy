@@ -91,7 +91,7 @@ init python:
         if not silent:
             meta = ITEM_DB[item_id]
             suffix = f" x{qty}" if qty > 1 else ""
-            push_toast(f"Item Acquired: {meta['name']}{suffix}", meta["category"], "#ebb963")
+            push_toast(f"{tr('Item Acquired')}: {tr(meta['name'])}{suffix}", tr(meta["category"]), "#ebb963")
 
     def has_item(item_id, qty=1):
         return store.inventory_items.get(item_id, 0) >= qty

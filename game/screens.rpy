@@ -305,12 +305,12 @@ screen main_menu():
             ypos 4
             yanchor 0.0
 
-            text "AN UNWANTED HERO'S CHRONICLE":
+            text _("AN UNWANTED HERO'S CHRONICLE"):
                 font "fonts/Roboto-Bold.ttf"
                 size 13
                 color "#7ec876"
 
-            text "Where the Grass\nStill Grows":
+            text _("Where the Grass\nStill Grows"):
                 font "fonts/LiberationSerif-Bold.ttf"
                 size 40
                 color "#f4f7fa"
@@ -318,13 +318,41 @@ screen main_menu():
 
             add Solid("#ebb963") xsize 165 ysize 2
 
-            text "\"This world does not need another savior.\nIt needs someone willing to stay human.\"":
+            text _("\"This world does not need another savior.\nIt needs someone willing to stay human.\""):
                 font "fonts/LiberationSerif-Italic.ttf"
                 size 15
                 color "#afc2d0"
                 ypos 4
 
     use navigation
+
+    # Top-right Language / Bahasa Switcher Pill
+    frame:
+        xalign 0.98
+        ypos 18
+        background Solid("#0c161fe0")
+        padding (14, 7)
+        hbox:
+            spacing 10
+            yalign 0.5
+            text _("Language:") size 14 color "#9ab0bf" yalign 0.5
+            textbutton "English":
+                action Language(None)
+                text_size 14
+                text_font "fonts/Roboto-Bold.ttf"
+                text_idle_color "#9eb2c0"
+                text_hover_color "#ffdf9a"
+                text_selected_color "#7ec876"
+                yalign 0.5
+            text "|" size 14 color "#3a505d" yalign 0.5
+            textbutton "Bahasa Indonesia":
+                action Language("indonesian")
+                text_size 14
+                text_font "fonts/Roboto-Bold.ttf"
+                text_idle_color "#9eb2c0"
+                text_hover_color "#ffdf9a"
+                text_selected_color "#7ec876"
+                yalign 0.5
 
     # Bottom-right version & milestone pill
     frame:
@@ -334,7 +362,7 @@ screen main_menu():
         padding (16, 8)
         hbox:
             spacing 14
-            text "{font=fonts/DejaVuSans.ttf}★{/font} Milestones: [achievement_count()] / [len(ACHIEVEMENT_DB)]" size 14 color "#ebb963"
+            text _("{font=fonts/DejaVuSans.ttf}★{/font} Milestones: [achievement_count()] / [len(ACHIEVEMENT_DB)]") size 14 color "#ebb963"
             text "•" size 14 color "#4a6170"
             text "v[config.version]" size 14 color "#9ab0bf"
 
@@ -580,6 +608,12 @@ screen preferences():
                     textbutton _("Unseen Text") action Preference("skip", "toggle")
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+
+                vbox:
+                    style_prefix "radio"
+                    label _("Language")
+                    textbutton "English" action Language(None)
+                    textbutton "Bahasa Indonesia" action Language("indonesian")
 
             hbox:
                 style_prefix "slider"

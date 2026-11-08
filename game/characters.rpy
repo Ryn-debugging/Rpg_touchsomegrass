@@ -2,6 +2,12 @@
 ## characters.rpy — Cast Definitions, Dynamic Nameplates & Stage Transforms
 ## ============================================================================
 
+init -1 python:
+    def tr(s):
+        if not s or not isinstance(s, str):
+            return s
+        return renpy.translation.translate_string(s)
+
 default leo_display_name = "Leo"
 default current_chapter_title = "Prologue: Fluorescent Rain"
 default current_location_name = "Eastside Laundromat"
@@ -49,14 +55,14 @@ define sera = Character(
 )
 
 define orin = Character(
-    "Master Orin",
+    _("Master Orin"),
     color="#8fd687",
     who_outlines=[(2, "#091017", 0, 0)],
     what_line_spacing=4,
 )
 
 define cassian = Character(
-    "Marshal Cassian",
+    _("Marshal Cassian"),
     color="#d4dce6",
     who_outlines=[(2, "#091017", 0, 0)],
     what_line_spacing=4,
@@ -64,11 +70,11 @@ define cassian = Character(
 
 ## Supporting World Voices ----------------------------------------------------
 define unknown_voice = Character("???", color="#9fb1bf", who_outlines=[(2, "#091017", 0, 0)])
-define clerk = Character("Clerk Fen", color="#d6c28f", who_outlines=[(2, "#091017", 0, 0)])
+define clerk = Character(_("Clerk Fen"), color="#d6c28f", who_outlines=[(2, "#091017", 0, 0)])
 define marcus = Character("Marcus", color="#e06c75", who_outlines=[(2, "#091017", 0, 0)])
-define baker = Character("Mistress Halda", color="#e5b181", who_outlines=[(2, "#091017", 0, 0)])
-define remnant = Character("Hollow Remnant", color="#b892ff", what_color="#dcd0ff", who_outlines=[(2, "#091017", 0, 0)])
-define kid = Character("Dropped-Bag Kid", color="#a3d9a5", who_outlines=[(2, "#091017", 0, 0)])
+define baker = Character(_("Mistress Halda"), color="#e5b181", who_outlines=[(2, "#091017", 0, 0)])
+define remnant = Character(_("Hollow Remnant"), color="#b892ff", what_color="#dcd0ff", who_outlines=[(2, "#091017", 0, 0)])
+define kid = Character(_("Dropped-Bag Kid"), color="#a3d9a5", who_outlines=[(2, "#091017", 0, 0)])
 
 ## Stage Transforms & Cinematics ----------------------------------------------
 transform stage_left:

@@ -22,7 +22,7 @@ init python:
         store.astro_stability = 100
         store.astro_misfires = 0
         int_bonus = get_stat("intelligence")
-        store.astro_log = f"Intelligence ({int_bonus}) widens your Grounding Band. Press LOCK HARMONIC (or SPACE) inside the green zone!"
+        store.astro_log = tr("Intelligence ([int_bonus]) widens your Grounding Band. Press LOCK HARMONIC (or SPACE) inside the green zone!").replace("[int_bonus]", str(int_bonus))
 
     def astro_zone_bounds(ring_idx):
         # Higher Intelligence widens the target sweet spot!
@@ -51,7 +51,7 @@ init python:
             store.astro_ring_index += 1
             if store.astro_ring_index >= 3:
                 return "perfect" if store.astro_misfires == 0 else "stabilized"
-            store.astro_log = f"Ring {store.astro_ring_index}/3 grounded! Tune the next harmonic band!"
+            store.astro_log = tr("Ring [ring]/3 grounded! Tune the next harmonic band!").replace("[ring]", str(store.astro_ring_index))
             return None
         else:
             renpy.sound.play("audio/sfx/rift_tear.ogg")
@@ -59,7 +59,7 @@ init python:
             store.astro_stability = max(0, store.astro_stability - 25)
             if store.astro_stability <= 0:
                 return "overload"
-            store.astro_log = f"Harmonic backlash! (-25% Seal Stability). Steady your breathing and strike the emerald band!"
+            store.astro_log = tr("Harmonic backlash! (-25% Seal Stability). Steady your breathing and strike the emerald band!")
             return None
 
 
@@ -94,12 +94,12 @@ screen astrolabe_minigame(crisis_title="Resonance Leak: Old Aqueduct Seam"):
             hbox:
                 xfill True
                 vbox:
-                    text crisis_title font "fonts/LiberationSerif-Bold.ttf" size 28 color "#73d2de"
-                    text "Rootwarden Grounding Calibration • Rings Locked: [astro_ring_index] / 3" size 16 color "#b4c5d2"
+                    text tr(crisis_title) font "fonts/LiberationSerif-Bold.ttf" size 28 color "#73d2de"
+                    text _("Rootwarden Grounding Calibration • Rings Locked: [astro_ring_index] / 3") size 16 color "#b4c5d2"
 
                 vbox:
                     xalign 1.0
-                    text "Seal Stability: [astro_stability]%" font "fonts/Roboto-Bold.ttf" size 18 color ("#7ec876" if astro_stability >= 50 else "#e06c75") xalign 1.0
+                    text _("Seal Stability: [astro_stability]%") font "fonts/Roboto-Bold.ttf" size 18 color ("#7ec876" if astro_stability >= 50 else "#e06c75") xalign 1.0
                     bar value astro_stability range 100 xsize 210 ysize 16 xalign 1.0
 
             add Solid("#27414d") xsize 848 ysize 2
@@ -119,8 +119,8 @@ screen astrolabe_minigame(crisis_title="Resonance Leak: Old Aqueduct Seam"):
                         vbox:
                             xalign 0.5
                             yalign 0.5
-                            text "Harmonic Ring [idx + 1]" size 15 font "fonts/Roboto-Bold.ttf" color ("#7ec876" if r_done else ("#ebb963" if r_curr else "#6f808c")) xalign 0.5
-                            text ("{font=fonts/DejaVuSans.ttf}✓{/font} GROUNDED" if r_done else ("ACTIVE TARGET" if r_curr else "LOCKED")) size 13 color ("#a7e8a1" if r_done else "#b8c7d4") xalign 0.5
+                            text _("Harmonic Ring [idx + 1]") size 15 font "fonts/Roboto-Bold.ttf" color ("#7ec876" if r_done else ("#ebb963" if r_curr else "#6f808c")) xalign 0.5
+                            text (_("{font=fonts/DejaVuSans.ttf}✓{/font} GROUNDED") if r_done else (_("ACTIVE TARGET") if r_curr else _("LOCKED"))) size 13 color ("#a7e8a1" if r_done else "#b8c7d4") xalign 0.5
 
             # Interactive Gauge Track (800px wide)
             $ lo_b, hi_b = astro_zone_bounds(astro_ring_index)
@@ -172,7 +172,7 @@ screen astrolabe_minigame(crisis_title="Resonance Leak: Old Aqueduct Seam"):
                             false=Function(astro_attempt_lock),
                         ),
                     )
-                    text "{font=fonts/DejaVuSans.ttf}⚡{/font} GROUND HARMONIC RING" font "fonts/Roboto-Bold.ttf" size 19 color "#ffdf9a" xalign 0.5 yalign 0.5
+                    text _("{font=fonts/DejaVuSans.ttf}⚡{/font} GROUND HARMONIC RING") font "fonts/Roboto-Bold.ttf" size 19 color "#ffdf9a" xalign 0.5 yalign 0.5
 
                 if has_stat("empathy", 5) or has_item("grounding_spade"):
                     button:
@@ -181,7 +181,7 @@ screen astrolabe_minigame(crisis_title="Resonance Leak: Old Aqueduct Seam"):
                         background Solid("#1d3342")
                         hover_background Solid("#2b4b61")
                         action [Play("sound", "audio/sfx/astrolabe_lock.ogg"), Return("stabilized")]
-                        text "Steady Spade Anchor (Auto-Seal)" size 15 color "#73d2de" xalign 0.5 yalign 0.5
+                        text _("Steady Spade Anchor (Auto-Seal)") size 15 color "#73d2de" xalign 0.5 yalign 0.5
 
 
 ## ----------------------------------------------------------------------------
@@ -218,7 +218,7 @@ init python:
         store.leo_hp = max(65, store.leo_hp)
         store.leo_focus = max(40, store.leo_focus)
         store.duel_intent, store.duel_intent_desc = DUEL_INTENTS[0]
-        store.duel_log = f"{enemy_name} blocks the Archive archway! Defeat it by depleting HP OR filling its Memory Peace (100%)!"
+        store.duel_log = tr("[enemy] blocks the Archive archway! Defeat it by depleting HP OR filling its Memory Peace (100%)!").replace("[enemy]", tr(enemy_name))
 
     def duel_advance_enemy_turn(action_summary):
         # Check win conditions immediately
@@ -235,19 +235,19 @@ init python:
                 counter = 18 + (8 if has_item("grounding_spade") else 0)
                 store.duel_enemy_hp = max(0, store.duel_enemy_hp - counter)
                 store.duel_enemy_composure = min(100, store.duel_enemy_composure + 15)
-                enemy_msg = f"Your Grounding stance channels its salt-sweep into bedrock (-{dmg} HP, -{counter} Enemy HP, +15% Peace)!"
+                enemy_msg = tr("Your Grounding stance channels its salt-sweep into bedrock (-[dmg] HP, -[counter] Enemy HP, +15% Peace)!").replace("[dmg]", str(dmg)).replace("[counter]", str(counter))
             else:
                 dmg = raw_dmg
-                enemy_msg = f"The salt-spear sweep clips your shoulder (-{dmg} HP)!"
+                enemy_msg = tr("The salt-spear sweep clips your shoulder (-[dmg] HP)!").replace("[dmg]", str(dmg))
             store.leo_hp = max(0, store.leo_hp - dmg)
         elif store.duel_intent == "weeping":
             dmg = 8 if store.duel_guarding else 14
             store.leo_hp = max(0, store.leo_hp - dmg)
-            enemy_msg = f"Waves of hollow static ache behind your eyes (-{dmg} HP)."
+            enemy_msg = tr("Waves of hollow static ache behind your eyes (-[dmg] HP).").replace("[dmg]", str(dmg))
         else:
             dmg = 6 if store.duel_guarding else 15
             store.leo_hp = max(0, store.leo_hp - dmg)
-            enemy_msg = f"Reflected shards graze the Vanguard shieldline (-{dmg} HP)."
+            enemy_msg = tr("Reflected shards graze the Vanguard shieldline (-[dmg] HP).").replace("[dmg]", str(dmg))
 
         store.duel_guarding = False
 
@@ -258,7 +258,7 @@ init python:
         if store.leo_hp <= 0:
             # Bram's shield intervenes at 1 HP once, or triggers gritty survival
             store.leo_hp = 25
-            store.duel_log = action_summary + " Bram slams his tower shield in front of you at the last second! ('Eyes up, Leo!')"
+            store.duel_log = action_summary + " " + tr("Bram slams his tower shield in front of you at the last second! ('Eyes up, Leo!')")
         else:
             store.duel_log = f"{action_summary}  •  {enemy_msg}"
 
@@ -278,14 +278,14 @@ init python:
                 base += 10
             dmg = int(base * bonus_mult)
             store.duel_enemy_hp = max(0, store.duel_enemy_hp - dmg)
-            return duel_advance_enemy_turn(f"You drive your copper-veined spade into the fissure for {dmg} damage!")
+            return duel_advance_enemy_turn(tr("You drive your copper-veined spade into the fissure for [dmg] damage!").replace("[dmg]", str(dmg)))
 
         elif move_id == "guard":
             renpy.sound.play("audio/sfx/astrolabe_lock.ogg")
             store.duel_guarding = True
             store.leo_focus = min(store.leo_max_focus, store.leo_focus + 15)
             store.leo_hp = min(store.leo_max_hp, store.leo_hp + 8)
-            return duel_advance_enemy_turn("You plant your boots alongside Bram, grounding the stone (+8 HP, +15 Focus, Braced)!")
+            return duel_advance_enemy_turn(tr("You plant your boots alongside Bram, grounding the stone (+8 HP, +15 Focus, Braced)!"))
 
         elif move_id == "analyze":
             renpy.sound.play("audio/sfx/ui_chime.ogg")
@@ -293,7 +293,7 @@ init python:
             peace_gain = 12 + get_stat("intelligence") * 3
             store.duel_enemy_composure = min(100, store.duel_enemy_composure + peace_gain)
             store.duel_guarding = True
-            return duel_advance_enemy_turn(f"You read the inscription on its breastplate (+{peace_gain}% Peace, Braced, Next Move 1.5x)!")
+            return duel_advance_enemy_turn(tr("You read the inscription on its breastplate (+[gain]% Peace, Braced, Next Move 1.5x)!").replace("[gain]", str(peace_gain)))
 
         elif move_id == "empathize":
             renpy.sound.play("audio/sfx/meadow_breath.ogg")
@@ -303,7 +303,7 @@ init python:
                 gain += 18
             gain = int(gain * bonus_mult)
             store.duel_enemy_composure = min(100, store.duel_enemy_composure + gain)
-            return duel_advance_enemy_turn(f"You speak to the person trapped inside the salt-armor (+{gain}% Memory Peace)!")
+            return duel_advance_enemy_turn(tr("You speak to the person trapped inside the salt-armor (+[gain]% Memory Peace)!").replace("[gain]", str(gain)))
 
         elif move_id == "resonance":
             renpy.sound.play("audio/sfx/rift_tear.ogg")
@@ -311,12 +311,12 @@ init python:
             change_resonance(12, silent=True)
             dmg = 52
             store.duel_enemy_hp = max(0, store.duel_enemy_hp - dmg)
-            return duel_advance_enemy_turn(f"Violet Astral light erupts from your palm for {dmg} damage—at the cost of -8% Reality Tether!")
+            return duel_advance_enemy_turn(tr("Violet Astral light erupts from your palm for [dmg] damage—at the cost of -8% Reality Tether!").replace("[dmg]", str(dmg)))
 
         elif move_id == "stew":
             use_satchel_item("iron_stew")
             store.duel_guarding = True
-            return duel_advance_enemy_turn("You wolf down Bram's hot garlic ration behind cover (+35 HP, +20 Focus)!")
+            return duel_advance_enemy_turn(tr("You wolf down Bram's hot garlic ration behind cover (+35 HP, +20 Focus)!"))
 
         return None
 
@@ -354,16 +354,16 @@ screen tactical_duel():
                         spacing 6
                         hbox:
                             xfill True
-                            text "[duel_enemy_name]" font "fonts/LiberationSerif-Bold.ttf" size 20 color "#c792ea"
-                            text "Turn [duel_turn]" size 14 color "#9eb2c0" xalign 1.0 yalign 0.5
+                            text "[duel_enemy_name!t]" font "fonts/LiberationSerif-Bold.ttf" size 20 color "#c792ea"
+                            text _("Turn [duel_turn]") size 14 color "#9eb2c0" xalign 1.0 yalign 0.5
                         hbox:
                             spacing 10
-                            text "Armor Integrity:" size 14 color "#e06c75" xsize 125
+                            text _("Armor Integrity:") size 14 color "#e06c75" xsize 125
                             bar value duel_enemy_hp range duel_enemy_max_hp xsize 260 ysize 16 yalign 0.5
                             text "[duel_enemy_hp]/[duel_enemy_max_hp]" size 14 color "#eaeef2"
                         hbox:
                             spacing 10
-                            text "Memory Peace:" size 14 color "#7ec876" xsize 125
+                            text _("Memory Peace:") size 14 color "#7ec876" xsize 125
                             bar value duel_enemy_composure range duel_enemy_max_composure xsize 260 ysize 16 yalign 0.5
                             text "[duel_enemy_composure]%" size 14 color "#a7e8a1"
 
@@ -377,16 +377,16 @@ screen tactical_duel():
                         spacing 6
                         hbox:
                             xfill True
-                            text "Leo & Vanguard Line" font "fonts/LiberationSerif-Bold.ttf" size 20 color "#ebb963"
-                            text "Tether: [tether]%" size 14 color "#7ec876" xalign 1.0 yalign 0.5
+                            text _("Leo & Vanguard Line") font "fonts/LiberationSerif-Bold.ttf" size 20 color "#ebb963"
+                            text _("Tether: [tether]%") size 14 color "#7ec876" xalign 1.0 yalign 0.5
                         hbox:
                             spacing 10
-                            text "Vitality (HP):" size 14 color "#7ec876" xsize 115
+                            text _("Vitality (HP):") size 14 color "#7ec876" xsize 115
                             bar value leo_hp range leo_max_hp xsize 260 ysize 16 yalign 0.5
                             text "[leo_hp]/[leo_max_hp]" size 14 color "#eaeef2"
                         hbox:
                             spacing 10
-                            text "Breath Focus:" size 14 color "#73d2de" xsize 115
+                            text _("Breath Focus:") size 14 color "#73d2de" xsize 115
                             bar value leo_focus range leo_max_focus xsize 260 ysize 16 yalign 0.5
                             text "[leo_focus]/[leo_max_focus]" size 14 color "#b8e3ea"
 
@@ -395,7 +395,7 @@ screen tactical_duel():
                 xfill True
                 background Solid("#221b30")
                 padding (16, 10)
-                text "{font=fonts/DejaVuSans.ttf}⚠{/font}  [duel_intent_desc!q]" size 16 font "fonts/Roboto-Medium.ttf" color "#e5c9ff"
+                text "{font=fonts/DejaVuSans.ttf}⚠{/font}  [duel_intent_desc!tq]" size 16 font "fonts/Roboto-Medium.ttf" color "#e5c9ff"
 
             # Narrative Combat Log
             frame:
@@ -426,8 +426,8 @@ screen tactical_duel():
                         )
                     ]
                     vbox:
-                        text "{font=fonts/DejaVuSans.ttf}⚔{/font}  Grounding Spade Strike  (STR [leo_stats['strength']])" font "fonts/Roboto-Bold.ttf" size 17 color "#ebb963"
-                        text "Shatters calcified armor; extra damage vs Warded barriers." size 14 color "#b4c5d2"
+                        text _("{font=fonts/DejaVuSans.ttf}⚔{/font}  Grounding Spade Strike  (STR [leo_stats['strength']])") font "fonts/Roboto-Bold.ttf" size 17 color "#ebb963"
+                        text _("Shatters calcified armor; extra damage vs Warded barriers.") size 14 color "#b4c5d2"
 
                 # 2. Brace & Ground
                 button:
@@ -448,8 +448,8 @@ screen tactical_duel():
                         )
                     ]
                     vbox:
-                        text "{font=fonts/DejaVuSans.ttf}◈{/font}  Brace & Conduct Into Bedrock" font "fonts/Roboto-Bold.ttf" size 17 color "#7ec876"
-                        text "Heavily reduces damage, restores +8 HP/+15 Focus, and reflects sweeps!" size 14 color "#b4c5d2"
+                        text _("{font=fonts/DejaVuSans.ttf}◈{/font}  Brace & Conduct Into Bedrock") font "fonts/Roboto-Bold.ttf" size 17 color "#7ec876"
+                        text _("Heavily reduces damage, restores +8 HP/+15 Focus, and reflects sweeps!") size 14 color "#b4c5d2"
 
                 # 3. Analyze Seam
                 button:
@@ -466,8 +466,8 @@ screen tactical_duel():
                         )
                     ]
                     vbox:
-                        text "{font=fonts/DejaVuSans.ttf}❖{/font}  Read Crest & Harmonic Seam  (INT [leo_stats['intelligence']])" font "fonts/Roboto-Bold.ttf" size 17 color "#73d2de"
-                        text "Guards lightly, adds Peace, and empowers your next action by 1.5x!" size 14 color "#b4c5d2"
+                        text _("{font=fonts/DejaVuSans.ttf}❖{/font}  Read Crest & Harmonic Seam  (INT [leo_stats['intelligence']])") font "fonts/Roboto-Bold.ttf" size 17 color "#73d2de"
+                        text _("Guards lightly, adds Peace, and empowers your next action by 1.5x!") size 14 color "#b4c5d2"
 
                 # 4. Reach Through (Mercy / Empathy)
                 button:
@@ -485,8 +485,8 @@ screen tactical_duel():
                         )
                     ]
                     vbox:
-                        text "{font=fonts/DejaVuSans.ttf}♣{/font}  Speak Their Forgotten Name  (EMP [leo_stats['empathy']]) (-10 Focus)" font "fonts/Roboto-Bold.ttf" size 17 color "#a7e8a1"
-                        text "Quiets the soul trapped inside the salt-armor. Huge bonus while Weeping." size 14 color "#b4c5d2"
+                        text _("{font=fonts/DejaVuSans.ttf}♣{/font}  Speak Their Forgotten Name  (EMP [leo_stats['empathy']]) (-10 Focus)") font "fonts/Roboto-Bold.ttf" size 17 color "#a7e8a1"
+                        text _("Quiets the soul trapped inside the salt-armor. Huge bonus while Weeping.") size 14 color "#b4c5d2"
 
                 # 5. Burn Astral Resonance (Temptation!)
                 button:
@@ -503,8 +503,8 @@ screen tactical_duel():
                         )
                     ]
                     vbox:
-                        text "{font=fonts/DejaVuSans.ttf}✦{/font}  Unleash Raw Astral Resonance  (Costs -8 Tether!)" font "fonts/Roboto-Bold.ttf" size 17 color "#d79bf7"
-                        text "Massive 52 damage blast—but permanently burns away a sliver of memory." size 14 color "#cbb5db"
+                        text _("{font=fonts/DejaVuSans.ttf}✦{/font}  Unleash Raw Astral Resonance  (Costs -8 Tether!)") font "fonts/Roboto-Bold.ttf" size 17 color "#d79bf7"
+                        text _("Massive 52 damage blast—but permanently burns away a sliver of memory.") size 14 color "#cbb5db"
 
                 # 6. Satchel Ration
                 button:
@@ -516,5 +516,5 @@ screen tactical_duel():
                     sensitive has_item("iron_stew")
                     action Function(duel_player_move, "stew")
                     vbox:
-                        text "{font=fonts/DejaVuSans.ttf}✚{/font}  Eat Bram's Iron-Skillet Ration ([item_count('iron_stew')] left)" font "fonts/Roboto-Bold.ttf" size 17 color ("#f29559" if has_item("iron_stew") else "#6c7a86")
-                        text "Restores +35 HP, +20 Focus, and braces behind cover." size 14 color "#b4c5d2"
+                        text _("{font=fonts/DejaVuSans.ttf}✚{/font}  Eat Bram's Iron-Skillet Ration ([item_count('iron_stew')] left)") font "fonts/Roboto-Bold.ttf" size 17 color ("#f29559" if has_item("iron_stew") else "#6c7a86")
+                        text _("Restores +35 HP, +20 Focus, and braces behind cover.") size 14 color "#b4c5d2"

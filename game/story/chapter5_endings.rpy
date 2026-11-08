@@ -302,7 +302,7 @@ label final_window_reflection(ending_banner_text):
     with Dissolve(1.8)
 
     pause 0.6
-    centered "{color=#ebb963}{font=fonts/LiberationSerif-Bold.ttf}{size=28}[ending_banner_text]{/size}{/font}{/color}"
+    centered "{color=#ebb963}{font=fonts/LiberationSerif-Bold.ttf}{size=28}[ending_banner_text!t]{/size}{/font}{/color}"
     pause 0.4
     centered "{color=#cbd8e2}{size=21}Thank you for playing {i}Where the Grass Still Grows{/i}.{/size}{/color}"
     centered "{color=#9eb4c4}{size=19}Before starting another route—or moving on to your next tab—\ntake ten quiet seconds.{/size}{/color}"

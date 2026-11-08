@@ -48,8 +48,8 @@ init python:
     STAT_COLORS = {k: col for k, _, col, _ in STAT_METADATA}
 
     def push_toast(title, body="", color="#7ec876"):
-        store.active_toast_title = title
-        store.active_toast_body = body
+        store.active_toast_title = tr(title) if title else ""
+        store.active_toast_body = tr(body) if body else ""
         store.active_toast_color = color
         renpy.show_screen("toast_banner")
         renpy.restart_interaction()
@@ -68,9 +68,9 @@ init python:
         actual = new_val - old_val
         if actual != 0 and not silent:
             sign = "+" if actual > 0 else ""
-            label = STAT_LABELS.get(key, key.title())
+            label = tr(STAT_LABELS.get(key, key.title()))
             col = STAT_COLORS.get(key, "#7ec876") if actual > 0 else "#e06c75"
-            push_toast(f"{label} {sign}{actual}", reason, col)
+            push_toast(f"{label} {sign}{actual}", tr(reason) if reason else "", col)
 
     def get_stat(stat_key):
         return store.leo_stats.get(stat_key.lower(), 0)
@@ -86,7 +86,8 @@ init python:
         if actual != 0 and not silent:
             sign = "+" if actual > 0 else ""
             col = "#7ec876" if actual > 0 else "#e06c75"
-            push_toast(f"Reality Tether {sign}{actual}%", reason, col)
+            t_lbl = tr("Reality Tether")
+            push_toast(f"{t_lbl} {sign}{actual}%", tr(reason) if reason else "", col)
 
     def change_resonance(delta, reason="", silent=False):
         old_val = store.resonance_load
@@ -96,14 +97,16 @@ init python:
         if actual != 0 and not silent:
             sign = "+" if actual > 0 else ""
             col = "#c792ea" if actual > 0 else "#73d2de"
-            push_toast(f"Astral Resonance {sign}{actual}%", reason, col)
+            r_lbl = tr("Astral Resonance")
+            push_toast(f"{r_lbl} {sign}{actual}%", tr(reason) if reason else "", col)
 
     def change_crowns(delta, reason="", silent=False):
         store.brass_crowns += delta
         if delta != 0 and not silent:
             sign = "+" if delta > 0 else ""
             col = "#ebb963" if delta > 0 else "#e06c75"
-            push_toast(f"{sign}{delta} Brass Crowns", reason, col)
+            c_lbl = tr("Brass Crowns")
+            push_toast(f"{sign}{delta} {c_lbl}", tr(reason) if reason else "", col)
 
     def restore_vitality(hp_gain=0, focus_gain=0, silent=False):
         store.leo_hp = min(store.leo_max_hp, max(1, store.leo_hp + hp_gain))
@@ -113,8 +116,8 @@ init python:
             if hp_gain > 0:
                 parts.append(f"+{hp_gain} HP")
             if focus_gain > 0:
-                parts.append(f"+{focus_gain} Focus")
-            push_toast("Vitality Restored", ", ".join(parts), "#7ec876")
+                parts.append(f"+{focus_gain} {tr('Focus')}")
+            push_toast(tr("Vitality Restored"), ", ".join(parts), "#7ec876")
 
     def set_flag(flag_name):
         store.story_flags.add(flag_name)

@@ -97,4 +97,4 @@ init python:
             meta = CHARACTER_PROFILES[char_id]
             sign = "+" if actual > 0 else ""
             col = meta["color"] if actual > 0 else "#e06c75"
-            push_toast(f"{meta['name']} {sign}{actual}", note or affinity_rank(char_id), col)
+            push_toast(f"{tr(meta['name'])} {sign}{actual}", note or affinity_rank(char_id), col)

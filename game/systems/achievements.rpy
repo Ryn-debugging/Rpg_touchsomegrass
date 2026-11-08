@@ -35,7 +35,7 @@ init python:
             renpy.save_persistent()
             title, desc, col = ACHIEVEMENT_MAP[ach_id]
             renpy.sound.play("audio/sfx/ui_chime.ogg")
-            push_toast(f"Achievement: {title}", desc, col)
+            push_toast(f"{tr('Achievement')}: {tr(title)}", tr(desc), col)
 
     def has_achievement(ach_id):
         if persistent.tsg_achievements is None:

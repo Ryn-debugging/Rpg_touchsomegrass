@@ -41,6 +41,9 @@ Equipped with a copper-veined Rootwarden spade instead of a legendary sword, Leo
   - **Tactical Stance Encounter:** Turn-based narrative combat against the **Hollow Remnant** allowing victory through either frontline force (**Armor Integrity**) or empathy (**Memory Peace**).
 - **Persistent Achievements (`game/systems/achievements.rpy`):**
   - 12 cross-playthrough milestones and ending badges tracked right from the Title Screen and in-game menu.
+- **Dual-Language Localization & Live Switching (`English` & `Bahasa Indonesia`):**
+  - Full literary translation across all story chapters, custom RPG menus, HUD, toast notifications, world codex, and mini-games in `game/tl/indonesian/`.
+  - Switch languages seamlessly anytime from the **Title Screen language toggle** or the **Settings (Pengaturan) menu**.
 - **Original Visual & Audio Suite:**
   - Cohesive anime key-art CGs, atmospheric painted backgrounds, 22 transparent character expression sprites, custom dark-botanical & lantern-amber UI, 8 loopable stereo `.ogg` BGM tracks, 3 ambient soundscapes, and 7 custom SFX.
 

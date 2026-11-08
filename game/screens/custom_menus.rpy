@@ -36,29 +36,29 @@ screen character_status_screen():
                         hbox:
                             xfill True
                             text "[leo_display_name] Sato" font "fonts/LiberationSerif-Bold.ttf" size 26 color "#ebb963"
-                            text "Brass Crowns: [brass_crowns]" size 16 color "#ebb963" xalign 1.0 yalign 0.5
+                            text _("Brass Crowns: [brass_crowns]") size 16 color "#ebb963" xalign 1.0 yalign 0.5
 
-                        text "Accidental Outworlder • State: [tether_status_label()]" size 15 color "#9ec4d8"
+                        text _("Accidental Outworlder • State: [tether_status_label()!t]") size 15 color "#9ec4d8"
 
                         hbox:
                             spacing 12
-                            text "Reality Tether:" size 15 color "#7ec876" xsize 145
+                            text _("Reality Tether:") size 15 color "#7ec876" xsize 145
                             bar value tether range 100 xsize 320 ysize 16 yalign 0.5
                             text "[tether]%" size 15 font "fonts/Roboto-Bold.ttf" color "#eaeef2"
 
                         hbox:
                             spacing 12
-                            text "Astral Resonance:" size 15 color "#c792ea" xsize 145
+                            text _("Astral Resonance:") size 15 color "#c792ea" xsize 145
                             bar value resonance_load range 100 xsize 320 ysize 16 yalign 0.5
                             text "[resonance_load]%" size 15 font "fonts/Roboto-Bold.ttf" color "#dfc2f7"
 
                         hbox:
                             spacing 24
-                            text "Vitality (HP): [leo_hp] / [leo_max_hp]" size 14 color "#a7e8a1"
-                            text "Breath Focus: [leo_focus] / [leo_max_focus]" size 14 color "#73d2de"
-                            text "Clover Relics: [clover_relics_found] / 3" size 14 color "#ebb963"
+                            text _("Vitality (HP): [leo_hp] / [leo_max_hp]") size 14 color "#a7e8a1"
+                            text _("Breath Focus: [leo_focus] / [leo_max_focus]") size 14 color "#73d2de"
+                            text _("Clover Relics: [clover_relics_found] / 3") size 14 color "#ebb963"
 
-            text "Core Attributes" font "fonts/LiberationSerif-Bold.ttf" size 22 color "#ebb963"
+            text _("Core Attributes") font "fonts/LiberationSerif-Bold.ttf" size 22 color "#ebb963"
 
             # 6 Core Stats List
             vbox:
@@ -75,10 +75,10 @@ screen character_status_screen():
                             spacing 4
                             hbox:
                                 xfill True
-                                text "[label]" font "fonts/Roboto-Bold.ttf" size 18 color col xsize 160
+                                text "[label!t]" font "fonts/Roboto-Bold.ttf" size 18 color col xsize 160
                                 bar value disp_bar range disp_max xsize 340 ysize 14 yalign 0.5
                                 text "  [val]" font "fonts/Roboto-Bold.ttf" size 18 color "#ffffff"
-                            text "[desc]" size 14 color "#a5b7c4"
+                            text "[desc!t]" size 14 color "#a5b7c4"
 
 
 ## 2. RELATIONSHIPS / BONDS SCREEN --------------------------------------------
@@ -89,7 +89,7 @@ screen relationships_screen():
             spacing 14
             xsize 880
 
-            text "The people of Solvara have lives, regrets, and loyalties that do not revolve around you. Choices determine whether you remain a stranger—or become someone's anchor." size 15 color "#a9bcc9" xsize 835
+            text _("The people of Solvara have lives, regrets, and loyalties that do not revolve around you. Choices determine whether you remain a stranger—or become someone's anchor.") size 15 color "#a9bcc9" xsize 835
 
             for cid in CHARACTER_ORDER:
                 $ meta = CHARACTER_PROFILES[cid]
@@ -117,20 +117,20 @@ screen relationships_screen():
                                 xfill True
                                 hbox:
                                     xfill True
-                                    text meta["name"] font "fonts/LiberationSerif-Bold.ttf" size 22 color meta["color"]
-                                    text "[rank_txt]  (Affinity: [aff])" font "fonts/Roboto-Bold.ttf" size 15 color "#ebb963" xalign 1.0 yalign 0.5
+                                    text tr(meta["name"]) font "fonts/LiberationSerif-Bold.ttf" size 22 color meta["color"]
+                                    text _("[rank_txt!t]  (Affinity: [aff])") font "fonts/Roboto-Bold.ttf" size 15 color "#ebb963" xalign 1.0 yalign 0.5
 
-                                text meta["role"] size 14 color "#8fb0c4"
+                                text tr(meta["role"]) size 14 color "#8fb0c4"
                                 bar value (aff + 5) range 18 xsize 380 ysize 12
-                                text meta["summary"] size 14 color "#d6e0e8"
+                                text tr(meta["summary"]) size 14 color "#d6e0e8"
 
                                 if has_flag(meta["secret_flag"]):
-                                    text "{font=fonts/DejaVuSans.ttf}★{/font} " + meta["secret_note"] size 13 color "#7ec876"
+                                    text "{font=fonts/DejaVuSans.ttf}★{/font} " + tr(meta["secret_note"]) size 13 color "#7ec876"
                     else:
                         hbox:
                             spacing 16
                             text "???" font "fonts/LiberationSerif-Bold.ttf" size 22 color "#5f7280"
-                            text "Unmet figure in Solvara. Continue the story to cross paths." size 15 color "#6d808f" yalign 0.5
+                            text _("Unmet figure in Solvara. Continue the story to cross paths.") size 15 color "#6d808f" yalign 0.5
 
 
 ## 3. JOURNAL & WORLDBUILDING CODEX SCREEN ------------------------------------
@@ -150,14 +150,14 @@ screen journal_screen():
                     hover_background Solid("#336353")
                     padding (20, 8)
                     action SetVariable("journal_tab", "quests")
-                    text "Quests & Objectives ([len(quest_states)])" font "fonts/Roboto-Bold.ttf" size 17 color ("#ffdf9a" if journal_tab == "quests" else "#9eb2c0")
+                    text _("Quests & Objectives ([len(quest_states)])") font "fonts/Roboto-Bold.ttf" size 17 color ("#ffdf9a" if journal_tab == "quests" else "#9eb2c0")
 
                 button:
                     background Solid("#264a3e" if journal_tab == "codex" else "#13212b")
                     hover_background Solid("#336353")
                     padding (20, 8)
                     action SetVariable("journal_tab", "codex")
-                    text "Solvara World Codex ([len(unlocked_codex)]/[len(CODEX_ORDER)])" font "fonts/Roboto-Bold.ttf" size 17 color ("#ffdf9a" if journal_tab == "codex" else "#9eb2c0")
+                    text _("Solvara World Codex ([len(unlocked_codex)]/[len(CODEX_ORDER)])") font "fonts/Roboto-Bold.ttf" size 17 color ("#ffdf9a" if journal_tab == "codex" else "#9eb2c0")
 
             add Solid("#29434f") xsize 880 ysize 2
 
@@ -172,7 +172,7 @@ screen journal_screen():
                         spacing 12
                         xfill True
                         if not quest_states:
-                            text "No quests recorded yet. Survive tonight first." size 16 color "#8ea2b0"
+                            text _("No quests recorded yet. Survive tonight first.") size 16 color "#8ea2b0"
                         for qid in QUEST_ORDER:
                             if qid in quest_states:
                                 $ qmeta = QUEST_DB[qid]
@@ -186,10 +186,10 @@ screen journal_screen():
                                         spacing 4
                                         hbox:
                                             xfill True
-                                            text "[qmeta['title']]" font "fonts/LiberationSerif-Bold.ttf" size 20 color ("#7ec876" if done else qmeta["color"])
-                                            text ("[qmeta['category']] • {font=fonts/DejaVuSans.ttf}✓{/font} COMPLETED" if done else "[qmeta['category']] • ACTIVE") size 13 font "fonts/Roboto-Bold.ttf" color ("#7ec876" if done else "#ebb963") xalign 1.0 yalign 0.5
-                                        text "[qmeta['summary']]" size 14 color "#b8c7d4"
-                                        text "{font=fonts/DejaVuSans.ttf}▸{/font} Current Note: [qstate['step']]" size 14 font "fonts/Roboto-Medium.ttf" color "#eaeef2"
+                                            text "[qmeta['title']!t]" font "fonts/LiberationSerif-Bold.ttf" size 20 color ("#7ec876" if done else qmeta["color"])
+                                            text (_("[qmeta['category']!t] • {font=fonts/DejaVuSans.ttf}✓{/font} COMPLETED") if done else _("[qmeta['category']!t] • ACTIVE")) size 13 font "fonts/Roboto-Bold.ttf" color ("#7ec876" if done else "#ebb963") xalign 1.0 yalign 0.5
+                                        text "[qmeta['summary']!t]" size 14 color "#b8c7d4"
+                                        text _("{font=fonts/DejaVuSans.ttf}▸{/font} Current Note: [qstate['step']!t]") size 14 font "fonts/Roboto-Medium.ttf" color "#eaeef2"
             else:
                 hbox:
                     spacing 18
@@ -205,7 +205,7 @@ screen journal_screen():
                         vbox:
                             spacing 6
                             for cid in CODEX_ORDER:
-                                $ ctitle, ccat, _ = CODEX_DB[cid]
+                                $ ctitle, ccat, _cbody = CODEX_DB[cid]
                                 $ is_open = cid in unlocked_codex
                                 button:
                                     xsize 302
@@ -215,8 +215,8 @@ screen journal_screen():
                                     sensitive is_open
                                     action SetVariable("selected_codex_id", cid)
                                     vbox:
-                                        text (ctitle if is_open else "Locked Entry") size 15 font "fonts/Roboto-Bold.ttf" color ("#ffdf9a" if selected_codex_id == cid and is_open else ("#d5e0e8" if is_open else "#5c6d7a"))
-                                        text (ccat if is_open else "Explore Solvara to unlock") size 12 color "#8399a8"
+                                        text (tr(ctitle) if is_open else _("Locked Entry")) size 15 font "fonts/Roboto-Bold.ttf" color ("#ffdf9a" if selected_codex_id == cid and is_open else ("#d5e0e8" if is_open else "#5c6d7a"))
+                                        text (tr(ccat) if is_open else _("Explore Solvara to unlock")) size 12 color "#8399a8"
 
                     # Right Codex Reader
                     frame:
@@ -228,10 +228,10 @@ screen journal_screen():
                             $ rtitle, rcat, rbody = CODEX_DB[selected_codex_id]
                             vbox:
                                 spacing 10
-                                text "[rcat]" size 13 font "fonts/Roboto-Bold.ttf" color "#7ec876"
-                                text "[rtitle]" font "fonts/LiberationSerif-Bold.ttf" size 25 color "#ebb963"
+                                text "[rcat!t]" size 13 font "fonts/Roboto-Bold.ttf" color "#7ec876"
+                                text "[rtitle!t]" font "fonts/LiberationSerif-Bold.ttf" size 25 color "#ebb963"
                                 add Solid("#29434f") xsize 490 ysize 2
-                                text "[rbody]" size 17 color "#e2eaf0" line_spacing 6
+                                text "[rbody!t]" size 17 color "#e2eaf0" line_spacing 6
 
 
 ## 4. INVENTORY / SATCHEL SCREEN ----------------------------------------------
@@ -266,8 +266,8 @@ screen inventory_screen():
                                     add imeta["icon"] xysize (44, 44) yalign 0.5
                                     vbox:
                                         yalign 0.5
-                                        text "[imeta['name']]" size 16 font "fonts/Roboto-Bold.ttf" color "#f0f4f8"
-                                        text "[imeta['category']]  •  Qty: [qty]" size 13 color "#9ab0bf"
+                                        text "[imeta['name']!t]" size 16 font "fonts/Roboto-Bold.ttf" color "#f0f4f8"
+                                        text _("[imeta['category']!t]  •  Qty: [qty]") size 13 color "#9ab0bf"
 
             # Right Inspector Panel
             frame:
@@ -284,11 +284,11 @@ screen inventory_screen():
                             spacing 16
                             add sel["icon"] xysize (56, 56) yalign 0.5
                             vbox:
-                                text "[sel['name']]" font "fonts/LiberationSerif-Bold.ttf" size 24 color "#ebb963"
-                                text "[sel['category']]  (Owned: [item_count(selected_item_id)])" size 14 color "#7ec876"
+                                text "[sel['name']!t]" font "fonts/LiberationSerif-Bold.ttf" size 24 color "#ebb963"
+                                text _("[sel['category']!t]  (Owned: [item_count(selected_item_id)])") size 14 color "#7ec876"
 
                         add Solid("#28424f") xsize 435 ysize 2
-                        text "[sel['desc']!q]" size 16 color "#dce6ee" line_spacing 5
+                        text "[sel['desc']!tq]" size 16 color "#dce6ee" line_spacing 5
 
                         if sel["usable"] and not main_menu:
                             button:
@@ -297,9 +297,9 @@ screen inventory_screen():
                                 hover_background Solid("#38705d")
                                 padding (20, 10)
                                 action Function(use_satchel_item, selected_item_id)
-                                text ("Consume Supply" if sel["consumable"] else "Hold & Reflect") font "fonts/Roboto-Bold.ttf" size 17 color "#ffdf9a"
+                                text (_("Consume Supply") if sel["consumable"] else _("Hold & Reflect")) font "fonts/Roboto-Bold.ttf" size 17 color "#ffdf9a"
                 else:
-                    text "Select an item from your satchel to inspect its history and effects." size 16 color "#8ea2b0" yalign 0.5
+                    text _("Select an item from your satchel to inspect its history and effects.") size 16 color "#8ea2b0" yalign 0.5
 
 
 ## 5. ACHIEVEMENTS / MILESTONES SCREEN ----------------------------------------
@@ -312,8 +312,8 @@ screen achievements_screen():
 
             hbox:
                 xfill True
-                text "Cross-Playthrough Milestones & Endings" font "fonts/LiberationSerif-Bold.ttf" size 22 color "#ebb963"
-                text "Unlocked: [achievement_count()] / [len(ACHIEVEMENT_DB)]" font "fonts/Roboto-Bold.ttf" size 17 color "#7ec876" xalign 1.0 yalign 0.5
+                text _("Cross-Playthrough Milestones & Endings") font "fonts/LiberationSerif-Bold.ttf" size 22 color "#ebb963"
+                text _("Unlocked: [achievement_count()] / [len(ACHIEVEMENT_DB)]") font "fonts/Roboto-Bold.ttf" size 17 color "#7ec876" xalign 1.0 yalign 0.5
 
             for aid, atitle, adesc, acol in ACHIEVEMENT_DB:
                 $ unlocked = has_achievement(aid)
@@ -326,5 +326,5 @@ screen achievements_screen():
                         text ("★" if unlocked else "◇") font "fonts/DejaVuSans.ttf" size 24 color (acol if unlocked else "#4e606d") yalign 0.5
                         vbox:
                             spacing 2
-                            text "[atitle]" font "fonts/Roboto-Bold.ttf" size 17 color (acol if unlocked else "#708290")
-                            text (adesc if unlocked else "Hidden milestone — continue exploring choices and routes to unlock.") size 14 color ("#d8e3ec" if unlocked else "#5d6e7b")
+                            text "[atitle!t]" font "fonts/Roboto-Bold.ttf" size 17 color (acol if unlocked else "#708290")
+                            text (tr(adesc) if unlocked else _("Hidden milestone — continue exploring choices and routes to unlock.")) size 14 color ("#d8e3ec" if unlocked else "#5d6e7b")

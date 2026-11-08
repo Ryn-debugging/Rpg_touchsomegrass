@@ -161,7 +161,7 @@ init python:
         if not silent:
             renpy.sound.play("audio/sfx/quest_journal.ogg")
             q = QUEST_DB[qid]
-            push_toast(f"New {q['category']}: {q['title']}", step_text, q["color"])
+            push_toast(f"{tr('New')} {tr(q['category'])}: {tr(q['title'])}", tr(step_text), q["color"])
 
     def advance_quest(qid, step_text, silent=False):
         if qid not in QUEST_DB:
@@ -169,7 +169,7 @@ init python:
         store.quest_states[qid] = {"status": "active", "step": step_text}
         if not silent:
             q = QUEST_DB[qid]
-            push_toast(f"Updated: {q['title']}", step_text, q["color"])
+            push_toast(f"{tr('Updated')}: {tr(q['title'])}", tr(step_text), q["color"])
 
     def complete_quest(qid, summary_step="Completed.", silent=False):
         if qid not in QUEST_DB:
@@ -178,7 +178,7 @@ init python:
         if not silent:
             renpy.sound.play("audio/sfx/quest_journal.ogg")
             q = QUEST_DB[qid]
-            push_toast(f"Completed: {q['title']}", summary_step, "#7ec876")
+            push_toast(f"{tr('Completed')}: {tr(q['title'])}", tr(summary_step), "#7ec876")
 
     def quest_status(qid):
         if qid not in store.quest_states:
@@ -189,16 +189,17 @@ init python:
         if cid in CODEX_DB and cid not in store.unlocked_codex:
             store.unlocked_codex.add(cid)
             if not silent:
-                title, _, _ = CODEX_DB[cid]
-                push_toast("Codex Unlocked", title, "#73d2de")
+                title, _cat, _body = CODEX_DB[cid]
+                push_toast(tr("Codex Unlocked"), tr(title), "#73d2de")
 
     def register_clover_relic(location_hint=""):
         store.clover_relics_found = min(3, store.clover_relics_found + 1)
         count = store.clover_relics_found
+        step_msg = f"Found {count}/3 pressed Earth-clover relics." if not location_hint else f"{count}/3 ({location_hint})"
         if quest_status("hq_three_clovers") == "unstarted":
-            start_quest("hq_three_clovers", f"Found {count}/3 pressed Earth-clover relics ({location_hint}).")
+            start_quest("hq_three_clovers", step_msg)
         elif count < 3:
-            advance_quest("hq_three_clovers", f"Found {count}/3 pressed Earth-clover relics ({location_hint}).")
+            advance_quest("hq_three_clovers", step_msg)
         else:
             complete_quest("hq_three_clovers", "All 3 Forgotten Clover relics recovered! A hidden resonance path stirs.")
             unlock_codex("codex_two_roots")
