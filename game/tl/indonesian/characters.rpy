@@ -4,11 +4,11 @@ translate indonesian strings:
 
     # game/characters.rpy:51
     old "Master Orin"
-    new "Tetua Orin"
+    new "Kakek Orin"
 
     # game/characters.rpy:58
     old "Marshal Cassian"
-    new "Marsekal Cassian"
+    new "Panglima Cassian"
 
     # game/characters.rpy:67
     old "Clerk Fen"
@@ -24,4 +24,4 @@ translate indonesian strings:
 
     # game/characters.rpy:71
     old "Dropped-Bag Kid"
-    new "Anak yang Terjatuh"
+    new "Anak Sekolah"

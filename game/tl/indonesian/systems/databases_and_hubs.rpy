@@ -3,13 +3,13 @@
 translate indonesian strings:
 
     old "Eastside Laundromat"
-    new "Binatu Eastside"
+    new "Laundromat Eastside"
 
     old "Master Orin Mossbeard"
     new "Tetua Orin Mossbeard"
 
     old "High Marshal Cassian Vey"
-    new "Marsekal Tinggi Cassian Vey"
+    new "Panglima Agung Cassian Vey"
 
     old "Vespera Kael"
     new "Vespera Kael"
@@ -24,7 +24,7 @@ translate indonesian strings:
     new "Tanpa Perlu Truk"
 
     old "Survived an interdimensional abduction through an Eastside laundromat puddle."
-    new "Selamat dari penculikan lintas dimensi lewat genangan air binatu Eastside."
+    new "Selamat dari penculikan lintas dimensi lewat genangan air laundromat Eastside."
 
     old "Public Hazard Citation"
     new "Surat Tilang Bahaya Publik"
@@ -105,7 +105,7 @@ translate indonesian strings:
     new "Buku catatan spiral penuh selotip dari kelas empat SD berjudul 'Kronik Sir Valorian.' Separuh halamannya masih menyisakan noda lumpur kering dari belakang tribun sekolah; pinggiran halamannya yang baru penuh coretan anggaran minimarket dan sketsa Thornwick."
 
     old "Eastside Laundromat Token"
-    new "Koin Binatu Eastside"
+    new "Koin Laundromat Eastside"
 
     old "A grooved brass dryer token stamped 'NO CASH REFUNDS.' Cold, cheap, undeniably real—rubbing your thumb over the ridge reminds you of warm detergent steam on rainy Tuesday nights."
     new "Koin pengering kuningan beralur dengan cap 'TIDAK BISA DIUANGKAN.' Dingin, murah, dan nyata tak terbantahkan—mengusapkan ibu jari di tepiannya mengingatkanmu pada uap deterjen hangat di Selasa malam yang hujan."
@@ -180,7 +180,7 @@ translate indonesian strings:
     new "Mesin pengering #4 selalu berdecit saat berputar."
 
     old "Laundromat Token"
-    new "Koin Binatu"
+    new "Koin Laundromat"
 
     old "Cool brass in your palm. Earth is still waiting."
     new "Kuningan dingin di telapak tanganmu. Bumi masih menunggu."
@@ -228,7 +228,7 @@ translate indonesian strings:
     new "Utusan Cahaya Bintang & Marsekal Besi"
 
     old "Concordat prodigy Seraphina Lin and High Marshal Cassian Vey have arrived in Thornwick. Navigate their clash over the failing Sixth Seal without getting conscripted as fuel."
-    new "Anak emas Konkordat Seraphina Lin dan Marsekal Tinggi Cassian Vey telah tiba di Thornwick. Hadapi benturan mereka terkait melemahnya Segel Keenam tanpa dijadikan tumbal bahan bakar."
+    new "Anak emas Konkordat Seraphina Lin dan Panglima Agung Cassian Vey telah tiba di Thornwick. Hadapi benturan mereka terkait melemahnya Segel Keenam tanpa dijadikan tumbal bahan bakar."
 
     old "Roots Beneath the White Salt"
     new "Akar di Bawah Garam Putih"
@@ -342,7 +342,7 @@ translate indonesian strings:
     new "Penjaga Abu & Celah Hampa"
 
     old "Stationed along the northern salt-cliffs of Fort Bastion under High Marshal Cassian Vey, the Vigil guards the twenty-year-old seal containing the Hollow Tide—a psychic storm of condensed grief and forgotten names."
-    new "Bertugas di sepanjang tebing garam utara Benteng Bastion di bawah komando Marsekal Tinggi Cassian Vey, Penjaga Abu mengawal segel berusia dua puluh tahun yang menahan Pasang Hampa—badai psikis dari duka yang memadat dan nama-nama yang terlupakan."
+    new "Bertugas di sepanjang tebing garam utara Benteng Bastion di bawah komando Panglima Agung Cassian Vey, Penjaga Abu mengawal segel berusia dua puluh tahun yang menahan Gelombang Hampa—badai psikis dari duka yang memadat dan nama-nama yang terlupakan."
 
     old "The Six Paragons of Legend"
     new "Enam Paragon Legenda"
@@ -531,7 +531,7 @@ translate indonesian strings:
     new "Apartemen 4B • 02.14 Dini Hari"
 
     old "Eastside Laundromat Alley"
-    new "Gang Binatu Eastside"
+    new "Gang Laundromat Eastside"
 
     old "PROLOGUE"
     new "PROLOG"
@@ -840,7 +840,7 @@ translate indonesian strings:
     new "Membumikan retakan Akuaduk Tua sebelum ladang Thornwick membatu garam."
 
     old "Confront Envoy Seraphina Lin and High Marshal Cassian Vey in Chapter 2."
-    new "Hadapi Utusan Seraphina Lin dan Marsekal Tinggi Cassian Vey di Bab 2."
+    new "Hadapi Utusan Seraphina Lin dan Panglima Agung Cassian Vey di Bab 2."
 
     old "Chapter 2: The Girl Who Forgot Rain"
     new "Bab 2: Gadis yang Melupakan Hujan"
@@ -873,7 +873,7 @@ translate indonesian strings:
     new "Mencatat belas kasihmu yang tenang."
 
     old "Stood up to a High Marshal of the Vigil."
-    new "Berani menentang Marsekal Tinggi Penjaga Abu."
+    new "Berani menentang Panglima Agung Penjaga Abu."
 
     old "Backed her argument without flinching."
     new "Mendukung argumennya tanpa ragu."
@@ -1062,7 +1062,7 @@ translate indonesian strings:
     new "Berhasil mengambil Pelat Kalibrasi Era Pertama dan menyaksikan nasib Paragon IV."
 
     old "Race up the Crucible Spire before the Hollow Tide—or the Crucible itself—claims another soul."
-    new "Pacu langkahmu mendaki Menara Kawah sebelum Pasang Hampa—atau Kawah itu sendiri—merenggut satu jiwa lagi."
+    new "Pacu langkahmu mendaki Menara Kawah sebelum Gelombang Hampa—atau Kawah itu sendiri—merenggut satu jiwa lagi."
 
     old "Chapter 4: The Crucible of Crowns"
     new "Bab 4: Kawah Mahkota"
