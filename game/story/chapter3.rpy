@@ -14,7 +14,9 @@ label chapter3_start:
     )
 
     play music audio.bgm_mystery fadein 1.5
-    scene bg sunken_archive
+    $ set_atmosphere("salt_ash")
+    $ clear_panic()
+    scene bg sunken_archive at cam_reset
     with Dissolve(1.0)
 
     narrator "At dawn, Vespera unlocks an overgrown Rootwarden sluice-gate two miles west of Thornwick. Spiral basalt stairs lead three hundred feet below the White Salt Wastes into a cavern held open by petrified world-tree roots."
@@ -35,7 +37,9 @@ label chapter3_start:
     $ hub_actions_left = 3
 
 label ch3_archive_hub:
-    scene bg sunken_archive
+    $ set_atmosphere("salt_ash")
+    $ clear_panic()
+    scene bg sunken_archive at cam_reset
     play music audio.bgm_mystery if_changed fadein 0.8
     $ current_location_name = "Sunken Archive (Exploration)"
 
@@ -105,7 +109,7 @@ label ch3_archive_hub:
 ## ARCHIVE NODE A: THE SIX PEDESTALS (THE PARAGON TWIST!) ---------------------
 label ch3_scene_pedestals:
     $ current_location_name = "Aisle of the Six Pedestals"
-    scene bg sunken_archive
+    scene bg sunken_archive at cam_reset
     with Dissolve(0.4)
 
     show leo nervous at stage_left
@@ -114,23 +118,33 @@ label ch3_scene_pedestals:
 
     narrator "My flashlight—well, Vespera's brass lantern—sweeps behind the fourth salt-crusted statue. Scratched frantically into the slate with a belt buckle are words in messy, unmistakable English:"
     narrator "{i}'MY NAME IS DANIEL CHO. TACOMA, WA. IF ANOTHER ONE OF US GETS PULLED HERE—DO NOT DRINK THE CRUCIBLE. I KILLED THE THIRD CALAMITY TODAY AND SAW A WRISTWATCH FUSED INSIDE ITS RIBS.'{/i}"
-    narrator "{i}'THERE ARE NO DEMON KINGS. IT'S JUST US AFTER WE FORGET HOME.'{/i}"
+
+    stop music fadeout 0.2
+    play sound audio.sfx_subdrop
+    scene bg sunken_archive at cam_dutch_panic
+    show leo nervous at stage_left
+    show sera fragile at stage_right, sprite_shiver_loop
+    $ set_panic(2, ["NO DEMON KINGS", "IT'S JUST US", "PARAGON III // CALAMITY III"], sfx="tinnitus")
+    narrator "{i}'THERE ARE NO DEMON KINGS. {glitch}IT'S JUST US{/glitch} AFTER WE FORGET HOME.'{/i}"
 
     play sound audio.sfx_heartbeat
     $ unlock_codex("codex_paragons")
     $ change_stat("intelligence", 1, "Uncovered the horrifying truth of the Six Paragons.")
     $ set_flag("learned_paragon_truth")
 
-    sera "...A wristwatch. No. The Choir hymns say the Hollow Sovereigns crawl up from the Abyss—"
+    sera "...A wristwatch. {shake}No.{/shake} The Choir hymns say the Hollow Sovereigns crawl up from the Abyss—"
     leo "Every Hero burned their memories until nothing was left except power looking for a fight... and then Aurelia summoned the {i}next{/i} lonely kid from Earth to put them down."
     narrator "Seraphina backs against a petrified root, hand over her mouth. Neither of us speaks for a long moment."
+    $ clear_panic()
+    scene bg sunken_archive at cam_reset
+    play music audio.bgm_mystery fadein 1.5
     return
 
 
 ## ARCHIVE NODE B: SUBTERRANEAN SPRING CAMPFIRE -------------------------------
 label ch3_scene_campfire:
     $ current_location_name = "Root-Spring Camp"
-    scene bg sunken_archive
+    scene bg sunken_archive at cam_reset
     with Dissolve(0.4)
 
     show bram grin at stage_left
@@ -158,7 +172,8 @@ label ch3_scene_campfire:
 ## ARCHIVE NODE C: FIRST BOTANIST'S ALCOVE (CLOVER #3!) -----------------------
 label ch3_scene_alcove:
     $ current_location_name = "First Botanist's Alcove"
-    scene bg sunken_archive
+    $ set_atmosphere("meadow_spores")
+    scene bg sunken_archive at cam_reset
     with Dissolve(0.4)
 
     show leo resolute at stage_center
@@ -183,19 +198,21 @@ label ch3_scene_alcove:
 label ch3_remnant_duel:
     stop music fadeout 0.6
     play music audio.bgm_combat fadein 0.8
+    $ set_atmosphere("crucible_sparks")
+    $ clear_panic()
     $ current_location_name = "Calibration Vault Threshold"
 
-    scene bg sunken_archive
+    scene bg sunken_archive at cam_heavy_quake
     with Dissolve(0.5)
 
     play sound audio.sfx_rift
     with vpunch
 
-    show remnant form at stage_center
+    show remnant form at stage_center, sprite_glitch_jolt
     with Dissolve(0.5)
 
     narrator "Before the bronze Calibration Plate rises a nine-foot figure of fractured white salt-armor. Weeping violet starlight spills through its cracked visor as a broken halberd scrapes across the flagstones."
-    remnant "...WHO... CALLS... FOR... DELIVERANCE...?"
+    remnant "{glitch}...WHO... CALLS...{/glitch} FOR... {shake}DELIVERANCE...?{/shake}"
 
     if has_flag("learned_paragon_truth"):
         leo "Wait—don't blast it! Look at the tarnished buckle under the crystal—that's Daniel Cho! The Fourth Paragon!"
@@ -205,8 +222,11 @@ label ch3_remnant_duel:
     $ init_tactical_duel("Hollow Remnant (Paragon IV)", 120)
     call screen tactical_duel
     $ duel_outcome = _return
+    scene bg sunken_archive at cam_reset
 
     if duel_outcome == "pacified":
+        $ set_flag("daniel_pacified")
+        $ set_atmosphere("meadow_spores")
         $ unlock_achievement("ach_remnant_mercy")
         $ change_stat("empathy", 2, "Restored Daniel Cho's human name instead of shattering him.")
         $ change_stat("courage", 1, "Lowered your weapon in front of a nine-foot calamity.")
@@ -219,10 +239,12 @@ label ch3_remnant_duel:
 
         leo "Daniel! Daniel Cho from Tacoma! The fight's over—nobody's asking you to carry the sky anymore!"
         narrator "The giant halberd freezes an inch above Bram's dented shield."
-        remnant "...Tacoma...? Rain... on... cedar...?"
+        remnant "...Tacoma...? {echo}Rain... on... cedar...?{/echo}"
         narrator "Instead of exploding into lethal salt, the crystalline armor sighs—crumbling into soft, dark, living loam across the cavern floor as a single pale green shoot uncurls between the stones."
 
     else:
+        $ set_flag("daniel_shattered")
+        $ set_atmosphere("salt_ash")
         $ change_stat("strength", 1, "Shattered calcified Fourth-Era armor.")
         $ change_stat("courage", 1, "Stood firm in the Archive vanguard.")
         $ change_affinity("bram", 2, "Fought shoulder-to-shoulder until the end.")
@@ -242,11 +264,15 @@ label ch3_remnant_duel:
 
     narrator "Vespera wrenches the heavy bronze **First-Era Calibration Plate** free from the altar—just as the entire cavern ceiling shudders violently, showering white dust down the stairs!"
     play sound audio.sfx_rift
+    scene bg sunken_archive at cam_heavy_quake
+    show vespera sharp at stage_left
+    show bram fierce at stage_right
     with vpunch
 
     bram "Uh-oh. My horn just rang like a church bell! That wasn't down here—that was {i}up top{/i}!"
     vespera "The northern sky! The Sixth Seal didn't wait for sunset—Cassian's Ascending the Crucible Spire RIGHT NOW! Move!"
 
+    $ set_atmosphere(None)
     $ complete_quest("mq_03_archive", "Recovered the First-Era Calibration Plate and witnessed the fate of Paragon IV.")
     $ start_quest("mq_04_crucible", "Race up the Crucible Spire before the Hollow Tide—or the Crucible itself—claims another soul.")
     pause 0.6

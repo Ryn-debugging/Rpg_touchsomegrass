@@ -158,18 +158,66 @@ style input:
 
 
 ## Choice Screen --------------------------------------------------------------
+transform choice_item_hover:
+    on idle:
+        easeout 0.14 xoffset 0
+    on hover:
+        easein 0.14 xoffset 8
+
 screen choice(items):
     style_prefix "choice"
 
     vbox:
+        if active_phantom_choice:
+            if not phantom_choice_dismissed:
+                button at sprite_shiver_loop:
+                    xsize 840
+                    background Solid("#2a0d16eb")
+                    hover_background Solid("#3b121ef5")
+                    padding (24, 12)
+                    hovered Function(dismiss_phantom_choice)
+                    action Function(dismiss_phantom_choice)
+
+                    hbox:
+                        spacing 14
+                        yalign 0.5
+                        text "✗" font "fonts/DejaVuSans.ttf" size 18 color "#e06c75" yalign 0.5
+                        text "[active_phantom_choice!t]":
+                            font "fonts/LiberationSerif-Italic.ttf"
+                            size 18
+                            color "#f2a6b0"
+                            yalign 0.5
+            else:
+                frame:
+                    xsize 840
+                    background Solid("#140b10c8")
+                    padding (24, 10)
+
+                    vbox:
+                        spacing 2
+                        hbox:
+                            spacing 12
+                            yalign 0.5
+                            text "✗" font "fonts/DejaVuSans.ttf" size 16 color "#704852" yalign 0.5
+                            text "{s}[active_phantom_choice!t]{/s}":
+                                font "fonts/LiberationSerif-Italic.ttf"
+                                size 16
+                                color "#7c646b"
+                                yalign 0.5
+                        text _("— No. I am done letting that voice choose for me."):
+                            font "fonts/Roboto-Medium.ttf"
+                            size 13
+                            color "#7ec876"
+                            xpos 28
+
         for i in items:
-            button:
+            button at choice_item_hover:
                 xsize 840
                 background Solid("#101d27eb")
                 hover_background Solid("#1e3b34f5")
                 insensitive_background Solid("#0d151cc8")
                 padding (24, 13)
-                action i.action
+                action [SetVariable("active_phantom_choice", None), SetVariable("phantom_choice_dismissed", False), i.action]
 
                 hbox:
                     spacing 14
@@ -189,6 +237,7 @@ style choice_vbox:
     ypos 295
     yanchor 0.5
     spacing 12
+
 
 
 ## Quick Menu Screen ----------------------------------------------------------

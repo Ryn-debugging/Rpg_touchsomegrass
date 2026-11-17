@@ -16,44 +16,60 @@ label prologue_start:
     )
 
     play ambience audio.amb_rain fadein 1.5
+    $ set_atmosphere("rain")
     scene bg childhood_bleachers
+    camera at cam_dutch_unease
     with Dissolve(1.2)
 
     narrator "Wet clover has a very specific taste when someone shoves your chin into it."
     narrator "Bitter. Like chewed dandelion stems and rusted chain-link fence."
 
     play sound audio.sfx_strike
+    camera at cam_heavy_quake
+    $ set_panic(2, ["Statues don't get kicked twice.", "Don't let your shoulders shake.", "Nobody is looking out the window."], sfx="tinnitus")
     with vpunch
 
     marcus "Hey, look at page twelve! 'Sir Valorian of the Dawn!' Did you draw yourself with abs, Sato? You can't even climb the gym rope!"
 
+    camera at cam_heartbeat_zoom
     narrator "Laughter cracks overhead—three sixth-graders standing dry under the aluminum bleachers while October rain drips off their sneaker soles onto the back of my neck."
+    play sound audio.sfx_static
     narrator "Paper tears. A slow, deliberate {i}riiiip{/i}."
     narrator "A crayon-gold cape flutters down into a puddle beside my nose and immediately turns soggy gray."
 
-    thought "Don't cry. If your shoulders shake, they stay another five minutes. That's the rule. Statues don't get kicked twice."
+    thought "{shake}Don't cry.{/shake} If your shoulders shake, they stay another five minutes. That's the rule. {echo}Statues don't get kicked twice.{/echo}"
 
     marcus "C'mon, leave it. My mom's picking us up. Later, 'Sir Valorian.'"
 
     narrator "Their footsteps splash away across the gravel lot. Nobody from the faculty room looks out the frosted window. Nobody ever does."
+    $ set_panic(1, ["Stay down until the footsteps stop.", "Sixty seconds."])
+    camera at cam_push_in
     narrator "I stay flat in the crushed clover for another sixty seconds, counting raindrops until my breathing stops stuttering, then reach out with mud-caked fingers to rescue the torn page."
 
+    $ set_phantom_choice("Leave the torn page in the mud, apologize to the empty gravel lot, and never draw again.")
     menu:
         "Smooth the torn paper cape carefully onto my knee. \"Someday I'll be strong enough that nobody laughs.\"":
+            $ clear_panic()
+            camera at cam_reset
             $ set_flag("childhood_vow_power")
             $ change_stat("courage", 1, "Refused to throw the torn page away.", silent=True)
             thought "Someday, a door will open. A real sword. Real monsters you're actually allowed to swing at. Someday, I'm going to become a hero."
 
         "Count their footsteps and memorize which gate they took so I can walk home the long way.":
+            $ clear_panic()
+            camera at cam_reset
             $ set_flag("childhood_vow_watchful")
             $ change_stat("intelligence", 1, "Learned early to map exits and footsteps.", silent=True)
             thought "Heroes in books always know when an ambush is coming. Until I'm brave, I'll settle for noticing everything first."
 
         "Stare at a crushed earthworm in the mud and move it onto dry grass under the bench.":
+            $ clear_panic()
+            camera at cam_reset
             $ set_flag("childhood_vow_kindness")
             $ change_stat("empathy", 1, "Protected something smaller than yourself.", silent=True)
             thought "If a hero ever showed up here, they wouldn't just beat up Marcus. They'd sit down first and ask if your lip was bleeding."
 
+    $ set_atmosphere(None)
     stop ambience fadeout 1.2
     scene black
     with chapter_wipe
@@ -66,6 +82,7 @@ label prologue_start:
     play ambience audio.amb_rain fadein 1.5
 
     scene bg leo_apartment
+    camera at cam_reset
     with Dissolve(1.2)
 
     narrator "Seventeen years later, the golden portal still hasn't opened."
@@ -77,12 +94,16 @@ label prologue_start:
     thought "Okay. Let's review the heroism scoreboard at age twenty-six."
     thought "Dragons slain: zero. Kingdoms liberated: zero. Times today I rehearsed telling my shift supervisor he mispronounced my name for eight months before smiling and saying 'No worries!': three."
 
+    camera at cam_push_in
+    $ set_panic(1, ["Rent adjustment notice: +14%.", "Say 'No worries!' and smile."])
     show leo nervous at stage_center, sink_sigh
     narrator "On my folding desk sits a half-price convenience-store curry udon. Cold. Without chopsticks, because the teenaged clerk forgot to toss a pair in the bag and I didn't want to ruin his night by asking."
     narrator "Beside the udon sits a pink rent-adjustment notice, my night-shift moderation headset, and—tucked halfway under the radiator—that same taped-together fourth-grade sketchbook."
 
     menu:
         "Check my phone: an unread text from Mom asking if I'm eating vegetables.":
+            $ clear_panic()
+            camera at cam_reset
             $ change_tether(5, "Replied to Mom—even if it was a harmless white lie.", silent=True)
             $ change_stat("empathy", 1, "Kept a thread to someone who cares.", silent=True)
             show leo warm at stage_center
@@ -90,6 +111,8 @@ label prologue_start:
             thought "Not exactly Arthur pulling Caliburn from the anvil. Still, my chest feels slightly less like wet concrete."
 
         "Drop down and attempt twenty midnight push-ups to prove I haven't completely given up.":
+            $ clear_panic()
+            camera at cam_reset
             $ change_stat("strength", 1, "Nine and a half push-ups count as rounding up to ten.", silent=True)
             show leo resolute at stage_center
             narrator "One. Two. Three... By eight, my left shoulder clicks like a rusty stapler. At eleven, the floorboards groan and my downstairs neighbor taps a broom handle against the ceiling."
@@ -98,6 +121,8 @@ label prologue_start:
             thought "Why did I apologize out loud to a plaster floor? Good lord, Leo."
 
         "Pull the battered hero sketchbook out from under the radiator for a minute.":
+            $ clear_panic()
+            camera at cam_reset
             $ change_stat("intelligence", 1, "Still remember every margin note.", silent=True)
             $ change_tether(3, "Held onto who you used to be.", silent=True)
             narrator "The crayon gold on 'Sir Valorian' has faded to mustard yellow. Somewhere around age nineteen, I started using the back pages for grocery math and electric bills."
@@ -110,7 +135,9 @@ label prologue_start:
     ## THE LAUNDROMAT ALLEY & ABDUCTION
     ## ------------------------------------------------------------------------
     $ current_location_name = "Eastside Laundromat Alley"
+    $ set_atmosphere("rain")
     scene bg rainy_alley
+    camera at cam_reset
     with Dissolve(0.9)
 
     show leo neutral at stage_left
@@ -124,9 +151,13 @@ label prologue_start:
     show leo nervous at stage_left
     thought "Did I just whisper 'Someday' at a storm drain? I need vitamins. Or sunlight. Possibly an exorcism."
 
-    play sound audio.sfx_heartbeat
+    stop ambience fadeout 0.2
+    stop music fadeout 0.3
+    play sound audio.sfx_subdrop
+    camera at cam_dutch_unease
     narrator "Wait."
     narrator "The rain stops hitting the puddle."
+    camera at cam_push_in
     narrator "Not the sidewalk—rain is still drumming on my umbrella and soaking my cuffs—just that six-foot oval of dirty water by the curb. Every droplet striking its surface freezes mid-splash, hanging like glass beads on invisible wire."
 
     leo "...Okay. No. Hang on. Let me look left and right."
@@ -134,15 +165,18 @@ label prologue_start:
     leo "Good. Nobody's getting reincarnated by freight logistics tonight. I'm just sleep-deprived and walking steadily back inside—"
 
     play sound audio.sfx_rift
-    stop music fadeout 0.4
+    $ set_atmosphere("crucible_sparks")
     scene cg puddle_rift
+    camera at cam_closeup
     with flash_astral
 
     narrator "The puddle splits open like torn silk, exhaling a gale of bone-dry white salt and ozone!"
+    camera at cam_heavy_quake
     narrator "A woman lunges upward out of the upside-down sky inside the asphalt—rain-slicked iron-buckled coat, soot-streaked cheek, wrist wrapped in scarred crystalline veins, clutching a spinning three-ring brass astrolabe that is actively throwing sparks."
 
     unknown_voice "Ha! Locked the tether! Peak heroic yearning at ninety-eight kelvins—come here, you glorious bastard, before the Concordat—"
 
+    camera at cam_push_in
     narrator "Her fingers clamp onto the front of my discount windbreaker. For half a second, our eyes meet."
     narrator "She looks at my wire-rimmed glasses. My plastic convenience-store bag. My posture."
     narrator "The triumphant grin vanishes from her face like chalk under a hose."
@@ -150,16 +184,21 @@ label prologue_start:
     unknown_voice "...Wait. Where's your armor?! Why are you holding a fabric-softener sheet?!"
     leo "I—excuse me, ma'am, you're standing in a pothole—"
     unknown_voice "Oh, gods damn my cheap solder! The beacon locked onto {i}daydreaming{/i}, not combat mass! Let go of my coat!"
+    camera at cam_heavy_quake
     leo "YOU'RE HOLDING {i}MY{/i} COAT!"
     unknown_voice "Don't breathe through your mouth, shrimp-spine, the salt-shear will peel your tongue!"
 
     play sound audio.sfx_rift
+    $ set_atmosphere(None)
+    camera at cam_dutch_panic
     scene black
     with vpunch
 
     narrator "Gravity inverts."
     narrator "The neon {b}24H MART{/b} sign stretches into a thin violet thread overhead—and snaps."
 
+    camera at cam_reset
     $ unlock_achievement("ach_kidnapped")
     pause 0.8
     return
+

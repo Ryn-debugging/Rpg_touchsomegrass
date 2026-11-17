@@ -27,7 +27,7 @@ define thought = Character(
 
 ## Major Cast -----------------------------------------------------------------
 define leo = Character(
-    "[leo_display_name]",
+    "[leo_display_name!t]",
     color="#ebb963",
     who_outlines=[(2, "#091017", 0, 0)],
     what_line_spacing=4,
@@ -78,29 +78,55 @@ define kid = Character(_("Dropped-Bag Kid"), color="#a3d9a5", who_outlines=[(2, 
 
 ## Stage Transforms & Cinematics ----------------------------------------------
 transform stage_left:
+    subpixel True
     xanchor 0.5 yanchor 1.0
     xpos 0.20 ypos 1.02
     easein 0.25 xpos 0.20 ypos 1.0
+    block:
+        ease 2.5 yoffset -3
+        ease 2.5 yoffset 0
+        repeat
 
 transform stage_midleft:
+    subpixel True
     xanchor 0.5 yanchor 1.0
     xpos 0.33 ypos 1.02
     easein 0.25 xpos 0.33 ypos 1.0
+    block:
+        ease 2.7 yoffset -3
+        ease 2.7 yoffset 0
+        repeat
 
 transform stage_center:
+    subpixel True
     xanchor 0.5 yanchor 1.0
     xpos 0.50 ypos 1.02
     easein 0.25 xpos 0.50 ypos 1.0
+    block:
+        ease 2.6 yoffset -3
+        ease 2.6 yoffset 0
+        repeat
 
 transform stage_midright:
+    subpixel True
     xanchor 0.5 yanchor 1.0
     xpos 0.67 ypos 1.02
     easein 0.25 xpos 0.67 ypos 1.0
+    block:
+        ease 2.8 yoffset -3
+        ease 2.8 yoffset 0
+        repeat
 
 transform stage_right:
+    subpixel True
     xanchor 0.5 yanchor 1.0
     xpos 0.80 ypos 1.02
     easein 0.25 xpos 0.80 ypos 1.0
+    block:
+        ease 2.4 yoffset -3
+        ease 2.4 yoffset 0
+        repeat
+
 
 transform hop:
     easein 0.10 yoffset -16

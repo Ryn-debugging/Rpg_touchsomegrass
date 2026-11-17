@@ -72,11 +72,6 @@ translate indonesian chapter2_start_9cb8dc7c:
     # narrator "Her fingers tighten around the porcelain handle until her knuckles blanch. Beside her collar, two tiny motes of silver Starlight flicker—and vanish."
     narrator "Jari-jarinya mencengkeram gagang cangkir porselen semakin erat hingga buku-buku jarinya memucat tegang. Di dekat kerah bajunya, dua butir cahaya bintang keperakan berkedip redup—lalu padam."
 
-# game/story/chapter2.rpy:45
-translate indonesian chapter2_start_7db884a3:
-
-    # thought "She just forgot the word 'lemon.' She's twenty-one years old, speaking English, and the magic literally ate the word 'lemon' out of her head."
-    thought "Dia baru saja melupakan kata 'lemon.' Umurnya baru dua puluh satu tahun, kami berbicara dalam bahasa Inggris, dan sihir dunia ini baru saja melahap kata 'lemon' dari ingatannya."
 
 # game/story/chapter2.rpy:47
 translate indonesian chapter2_start_3f85840b:
@@ -210,11 +205,6 @@ translate indonesian chapter2_start_2703f868:
     # sera "...Careful what you ask for. Hold out your palm."
     sera "...Hati-hati dengan apa yang kau minta. Buka telapak tanganmu."
 
-# game/story/chapter2.rpy:142
-translate indonesian chapter2_start_1878166a:
-
-    # narrator "Cold violet fire threads into my wrist. Instantly my shoulders feel lighter, sharper, fearless—and when I try to picture the bicycle I rode in third grade, there's only white static."
-    narrator "Api dingin violet merayap ke pergelangan tanganku. Seketika bahuku terasa lebih ringan, tajam, tak kenal takut—namun saat kucoba mengingat sepeda yang kukuasai waktu kelas tiga SD dulu, yang tersisa hanya derau putih."
 
 # game/story/chapter2.rpy:156
 translate indonesian chapter2_start_813baf16:
@@ -303,4 +293,29 @@ translate indonesian strings:
     # game/story/chapter2.rpy:178
     old "Take off my olive windbreaker and drape it over her shivering shoulders while she finishes hammering the stake."
     new "Lepaskan jaket angin hijau zaitunku dan sampirkan ke bahunya yang menggigil selagi dia menyelesaikan ketukan pada patok itu."
+
+# game/story/chapter2.rpy:31
+translate indonesian chapter2_start_0522fcb5:
+
+    # vespera "Don't look at me, Marshal—half his left shoelace is still crystal glass from when he tried to march back into Tuesday."
+    vespera "Jangan lihat aku begitu, Marsekal—separuh tali sepatu kirinya saja masih membeku jadi kristal kaca gara-gara tadi dia nekat mau jalan balik ke hari Selasa."
+
+# game/story/chapter2.rpy:33
+translate indonesian chapter2_start_31a39810:
+
+    # cassian "Though I see from the salve on Master Sato's knuckles that the Aqueduct surge bit hard enough to draw blood—and graze his Tether."
+    cassian "Meski dari salep di buku-buku jari Tuan Sato, saya melihat luapan di Akuaduk tadi menyengat cukup keras hingga melukai tangan—dan menyerempet Jangkar ingatannya."
+
+# game/story/chapter2.rpy:57
+translate indonesian chapter2_start_85374d13:
+
+    # thought "She just forgot the word {glitch}'lemon.'{/glitch} She's twenty-one years old, speaking English, and the magic literally ate the word {glitch}'lemon'{/glitch} out of her head."
+    thought "Dia barusan lupa kata {glitch}'lemon.'{/glitch} Umurnya baru dua puluh satu tahun, ngomong bahasa Inggris lancar, dan sihir itu beneran melahap kata {glitch}'lemon'{/glitch} dari dalam kepalanya."
+
+# game/story/chapter2.rpy:173
+translate indonesian chapter2_start_02955822:
+
+    # narrator "Cold violet fire threads into my wrist. Instantly my shoulders feel lighter, sharper, fearless—and when I try to picture the bicycle I rode in third grade, there's only {glitch}white static{/glitch}."
+    narrator "Api ungu dingin merayap masuk ke pergelangan tanganku. Seketika bahuku terasa lebih ringan, tajam, tanpa rasa takut—tapi saat aku mencoba membayangkan sepeda yang kukendarai waktu kelas tiga SD, yang tersisa hanyalah {glitch}derau statis putih{/glitch}."
+
 

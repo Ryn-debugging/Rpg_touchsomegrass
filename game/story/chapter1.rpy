@@ -14,7 +14,9 @@ label chapter1_start:
     )
 
     play ambience audio.amb_wind fadein 1.5
-    scene bg salt_ruins
+    $ set_atmosphere("salt_ash")
+    $ clear_panic()
+    scene bg salt_ruins at cam_dutch_unease
     with eye_blink
 
     narrator "When my eyes open, the sky is the color of tarnished pewter, and two pale broken moon-rings hang crooked above a horizon of crystalline white ash."
@@ -27,6 +29,7 @@ label chapter1_start:
     thought "Broken moons. Ancient stone pillars. Mysterious robed kidnapper—okay, coat-wearing kidnapper—kneeling five feet away swearing at a brass sphere."
     thought "Wait a second. Wait just one second. Did it actually happen?!"
 
+    scene bg salt_ruins at cam_reset
     show leo resolute at stage_left, hop
     leo "I'm... in another world."
     thought "Twenty-six years! Twenty-six years of eating microwave rice over the sink, and finally—FINALLY—the universe read my file!"
@@ -48,11 +51,16 @@ label chapter1_start:
 
     narrator "For three full seconds, the wind whistles across the salt plain while she stares at me as though I just offered to lick a plague rat."
 
+    stop ambience fadeout 0.3
+    play sound audio.sfx_subdrop
+    scene bg salt_ruins at cam_push_in
+    show leo nervous at stage_left
     show vespera tired at stage_right
     vespera "Kid. Look behind you."
     narrator "She points a scarred gloved thumb toward the miles of dead, chalk-white wasteland stretching west where forests clearly used to stand."
     vespera "See all that dead salt? That {i}used{/i} to be Oakhaven Valley before the Sixth 'Chosen Hero' unleashed his glorious final sword-beam twenty years ago."
     vespera "My name is Vespera Kael. I'm a Recall Broker. I get paid—badly—to {i}shut down{/i} summoning seams and send delusional Outworlders home before they 'save' another province into glass."
+    play ambience audio.amb_wind fadein 1.5
 
     $ meet_character("vespera")
     $ unlock_codex("codex_resonance", silent=True)
@@ -81,14 +89,33 @@ label chapter1_start:
             narrator "Vespera's fingers twitch, tugging her leather cuff down over the translucent glass veins."
             vespera "...Observant, aren't you? Yeah. Grade-two Hero-Scar. Keeps me honest about who pays the bill for miracles."
 
+        "Turn around and march back toward the ridge. \"Nope. Keep your salt apocalypse—I'm climbing back into my puddle.\"":
+            $ change_stat("intelligence", 1, "Refused the call to adventure on principle.")
+            $ change_tether(4, "Chose damp Earth asphalt over a lethal fantasy.", silent=True)
+            $ set_flag("tried_to_walk_back")
+            show leo resolute at stage_left
+            narrator "I pivot on my soggy heel and take four determined strides back toward the scorched basalt depression where I woke up."
+            play sound audio.sfx_rift
+            scene bg salt_ruins at cam_dutch_panic
+            show leo nervous at stage_left, flinch
+            show vespera sharp at stage_right
+            narrator "A hair-thin filament of violet static snaps across my sneaker toe. Instantly, the rubber aglet of my shoelace turns to brittle white salt-glass and shatters with a {i}tink{/i}."
+            vespera "Stop, you absolute turnip! That's an uncalibrated planar wake—step two inches further without an astrolabe lock and your shins will arrive in Tuesday while your torso stays in Cindervale!"
+            narrator "Vespera hauls me backward by the hood of my windbreaker like an errant cat."
+            scene bg salt_ruins at cam_reset
+            show leo nervous at stage_left
+            show vespera tired at stage_right
+            leo "...Okay! Point taken! We wait for the soldering iron!"
+
     ## ------------------------------------------------------------------------
     ## ENTERING THORNWICK SQUARE & THE MUNICIPAL CITATION
     ## ------------------------------------------------------------------------
     stop ambience fadeout 1.0
+    $ set_atmosphere(None)
     play music audio.bgm_thornwick fadein 1.5
     $ current_location_name = "Thornwick Charter Square"
 
-    scene bg thornwick_square
+    scene bg thornwick_square at cam_reset
     with Dissolve(1.0)
 
     narrator "Twenty minutes down the ridge, the white salt gives way to terraced dark stone, slate roofs, waterwheels, and the mouthwatering smell of wood-fired barley bread."
@@ -105,8 +132,10 @@ label chapter1_start:
     narrator "A nearsighted municipal clerk with an ink-stained tabard and an iron clipboard marches out from the weigh-station, squinting straight at my nylon windbreaker."
     clerk "Unnatural synthetic weave! Slouched shoulders! Starry-eyed bewilderment! That's an unregistered Outworlder!"
 
+    $ set_phantom_choice("\"Stand aside, NPC! I am the Seventh Hero of Legend!\" (Wait—don't actually say that)")
     menu:
         "Panic and strike what my brain thinks is a reassuringly noble stance. \"Fear not, good citizen!\"":
+            $ clear_panic()
             $ change_crowns(-40, "Anti-Deliverance Ordinance Citation #884.")
             $ change_stat("reputation", -1, "Declared heroic intent near municipal masonry.", silent=True)
             $ unlock_achievement("ach_fined")
@@ -117,6 +146,7 @@ label chapter1_start:
             vespera "I look away for {i}four seconds{/i} and you say 'Fear not' in a charter town. Incredible."
 
         "(Charisma / Honesty) Hold up my plastic laundry bag. \"Sir, I'm an underpaid data clerk. If a monster attacked, I'd file a ticket and hide.\"":
+            $ clear_panic()
             $ change_stat("charisma", 1, "Disarmed bureaucracy with pathetic honesty.")
             $ change_stat("reputation", 1, "Thornwick respects self-aware civilians.")
             $ start_quest("sq_turnip_ordinance", "Check in with Clerk Fen or Mistress Halda to earn honest keep.")
@@ -126,6 +156,7 @@ label chapter1_start:
             $ change_crowns(-10, "Portal Transit Stamp Fee.")
 
         "(Intelligence 5+) Cite the sign's wording: \"Wait—'Chosen Ones.' Vespera's astrolabe logged me at zero Resonance. Legally I'm cargo, not a Hero!\"" if has_stat("intelligence", 5):
+            $ clear_panic()
             $ change_stat("intelligence", 1, "Out-clause'd a frontier bureaucrat!")
             $ change_stat("reputation", 2, "Impressed Clerk Fen with charter law.")
             $ change_affinity("vespera", 1, "Delighted by your legal loophole.")
@@ -160,9 +191,10 @@ label chapter1_start:
     ## THE CONSERVATORY SCENE -------------------------------------------------
     stop music fadeout 1.0
     play music audio.bgm_conservatory fadein 1.8
+    $ set_atmosphere("meadow_spores")
     $ current_location_name = "The Last Meadow Conservatory"
 
-    scene cg conservatory_clover
+    scene cg conservatory_clover at cam_reset
     with flash_meadow
 
     narrator "Stepping through Master Orin's steamed cedar doors feels like walking straight into a childhood summer I'd forgotten existed."
@@ -171,7 +203,7 @@ label chapter1_start:
 
     leo "...It's just grass. Regular park grass."
 
-    scene bg orin_conservatory
+    scene bg orin_conservatory at cam_reset
     with Dissolve(0.8)
 
     show leo warm at stage_left
@@ -233,7 +265,9 @@ label chapter1_start:
     $ hub_actions_left = 4
 
 label ch1_thornwick_hub:
-    scene bg thornwick_square
+    $ set_atmosphere(None)
+    $ clear_panic()
+    scene bg thornwick_square at cam_reset
     play music audio.bgm_thornwick if_changed fadein 1.0
     $ current_location_name = "Thornwick Frontier (Exploration)"
 
@@ -317,7 +351,7 @@ label ch1_thornwick_hub:
 ## HUB SCENE 1A: THE CROOKED LANTERN INN (BRAM) -------------------------------
 label ch1_scene_inn_bram:
     $ current_location_name = "The Crooked Lantern Inn"
-    scene bg crooked_lantern_inn
+    scene bg crooked_lantern_inn at cam_reset
     with Dissolve(0.5)
 
     show leo neutral at stage_left
@@ -329,14 +363,21 @@ label ch1_scene_inn_bram:
     bram "Brooding doesn't keep twenty cold masons alive on night-watch, Leo! Bad soup kills morale faster than goblins!"
 
     narrator "For ten surprisingly peaceful minutes, we chop root vegetables side by side—until an iron grain-chute slams shut in the cellar below with a deafening {i}BOOM{/i}."
-    play sound audio.sfx_strike
+    play sound audio.sfx_subdrop
+    scene bg crooked_lantern_inn at cam_dutch_panic
+    show leo nervous at stage_left
+    show bram shaken at stage_right, sprite_shiver_loop
+    $ set_panic(2, ["Cellar timber cracking...", "Can't breathe—can't move—", "Hold the beam!"], sfx="tinnitus")
     with vpunch
 
-    show bram shaken at stage_right, tremble
     narrator "Bram's paring knife clatters onto the butcher block. Both of his huge hands grip the edge of the table, knuckles chalk-white, chest heaving as his chipped left horn hums with sub-audible panic."
 
     menu:
         "Don't stare or make a scene—quietly slide a mug of cool water next to his elbow and count four-second breaths out loud.":
+            $ clear_panic()
+            scene bg crooked_lantern_inn at cam_reset
+            show leo warm at stage_left
+            show bram shaken at stage_right
             $ change_stat("empathy", 1, "Recognized a panic spike from your own sleepless nights.")
             $ change_affinity("bram", 3, "Never forgot that you didn't humiliate him.")
             $ set_flag("bram_opened_up")
@@ -351,6 +392,8 @@ label ch1_scene_inn_bram:
             $ add_item("iron_stew", 1)
 
         "Clap his shoulder firmly and haul the heavy stockpot off the boil myself so it doesn't scorch.":
+            $ clear_panic()
+            scene bg crooked_lantern_inn at cam_reset
             $ change_stat("strength", 1, "Hauled a forty-pound cast-iron stockpot!")
             $ change_affinity("bram", 2, "Saved the night-watch broth without fuss.")
             show leo resolute at stage_left
@@ -366,7 +409,8 @@ label ch1_scene_inn_bram:
 ## HUB SCENE 1B: CONSERVATORY WORKBENCH (VESPERA & ORIN) ----------------------
 label ch1_scene_conservatory:
     $ current_location_name = "Conservatory Workbench"
-    scene bg orin_conservatory
+    $ set_atmosphere("meadow_spores")
+    scene bg orin_conservatory at cam_reset
     play music audio.bgm_conservatory fadein 0.8
     with Dissolve(0.5)
 
@@ -398,7 +442,7 @@ label ch1_scene_conservatory:
 ## HUB SCENE 1C: TOWN OVENS & WEIGH-STATION -----------------------------------
 label ch1_scene_square:
     $ current_location_name = "Thornwick Ovens"
-    scene bg thornwick_square
+    scene bg thornwick_square at cam_reset
     with Dissolve(0.5)
 
     show leo neutral at stage_left
@@ -430,7 +474,8 @@ label ch1_scene_square:
 ## HUB SCENE 1D: VANDALIZED SHRINE (HIDDEN CLOVER #1) -------------------------
 label ch1_scene_shrine:
     $ current_location_name = "Edge of the Salt Wall"
-    scene bg salt_ruins
+    $ set_atmosphere("salt_ash")
+    scene bg salt_ruins at cam_reset
     with Dissolve(0.5)
 
     show leo neutral at stage_center
@@ -456,9 +501,11 @@ label ch1_scene_shrine:
 label ch1_aqueduct_climax:
     stop music fadeout 0.8
     play music audio.bgm_combat fadein 1.0
+    $ set_atmosphere("crucible_sparks")
+    $ clear_panic()
     $ current_location_name = "Old Aqueduct • Dusk"
 
-    scene bg old_aqueduct
+    scene bg old_aqueduct at cam_heavy_quake
     with Dissolve(0.8)
 
     play sound audio.sfx_rift
@@ -474,15 +521,23 @@ label ch1_aqueduct_climax:
     vespera "I see it! The harmonic pressure's splitting three ways—I can hold the copper leads open, but somebody with zero Resonance bleed has to lock the three astrolabe rings on beat!"
     vespera "Leo! Get your question-mark spine over here and plant Orin's spade in the conduit!"
 
+    scene bg old_aqueduct at cam_heartbeat_zoom
+    show vespera sharp at stage_right
+    show bram fierce at stage_left
     show leo resolute at stage_center
     with Dissolve(0.25)
 
-    thought "My knees are shaking so hard my dryer token is jingling in my pocket. Every instinct from twenty-six years says step back and let the real adults handle it."
+    thought "My knees are shaking so hard my dryer token is jingling in my pocket. Every instinct from twenty-six years says {shake}step back{/shake} and let the real adults handle it."
     thought "No. Bram's holding a hundred pounds of iron against burning salt-wind. Vespera's wrists are bleeding crystal dust. Breathe in four—and LOCK THE RINGS!"
 
     $ init_astrolabe_game()
     call screen astrolabe_minigame("Aqueduct Resonance Rupture")
     $ seal_result = _return
+    $ set_atmosphere(None)
+    scene bg old_aqueduct at cam_reset
+    show vespera sharp at stage_right
+    show bram fierce at stage_left
+    show leo resolute at stage_center
 
     if seal_result == "perfect":
         $ unlock_achievement("ach_harmonic")
@@ -514,14 +569,18 @@ label ch1_aqueduct_climax:
 
     else:
         # Overload fallback — dramatic sacrifice/teamwork consequence, story continues organically!
+        $ set_flag("aqueduct_scar")
         $ change_stat("courage", 1, "Refused to let go even when the seal bucked!")
         $ change_stat("reputation", 1, "Took the brunt of the discharge with Bram.")
         $ restore_vitality(hp_gain=-25, focus_gain=-15, silent=True)
         $ change_tether(-5, "Resonance static grazed your memories during the backlash.")
+        play sound audio.sfx_static
+        $ set_panic(3, ["ELEMENTARY SCHOOL: [REDACTED]", "MEMORY SECTOR GRAZED", "HOLD THE SPADE"], sfx="tinnitus")
         with flash_crimson
 
         narrator "The third ring slips—violet static explodes across the arch! Rather than dive clear and let the wave hit the terraces, I throw my weight over the copper spade while Bram slams his tower shield over us both!"
-        narrator "For one terrifying second I forget the name of my elementary school—then Vespera kicks the emergency ground-spike home, snuffing the rift in a cloud of white steam."
+        narrator "For one terrifying second I forget the name of my {glitch}elementary school{/glitch}—then Vespera kicks the emergency ground-spike home, snuffing the rift in a cloud of white steam."
+        $ clear_panic()
         show vespera tired at stage_right
         vespera "Idiot! You took half that arc through your ribs instead of letting go! ...Drink some water. You kept the terraces green."
 

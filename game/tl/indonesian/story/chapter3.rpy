@@ -36,17 +36,7 @@ translate indonesian ch3_scene_pedestals_62eec143:
     # narrator "{i}'MY NAME IS DANIEL CHO. TACOMA, WA. IF ANOTHER ONE OF US GETS PULLED HERE—DO NOT DRINK THE CRUCIBLE. I KILLED THE THIRD CALAMITY TODAY AND SAW A WRISTWATCH FUSED INSIDE ITS RIBS.'{/i}"
     narrator "{i}'NAMAKU DANIEL CHO. TACOMA, WA. KALAU ADA LAGI ANAK BUMI YANG TERSERET KE SINI—JANGAN PERNAH MINUM DARI KAWAH MAHKOTA. HARI INI AKU MEMBUNUH BENCANA KETIGA DAN MELIHAT JAM TANGAN MELEBUR DI TULANG RUSUKNYA.'{/i}"
 
-# game/story/chapter3.rpy:117
-translate indonesian ch3_scene_pedestals_c3c248f8:
 
-    # narrator "{i}'THERE ARE NO DEMON KINGS. IT'S JUST US AFTER WE FORGET HOME.'{/i}"
-    narrator "{i}'TIDAK PERNAH ADA RAJA IBLIS. MEREKA SEMUA ADALAH KITA SENDIRI SETELAH KITA MELUPAKAN RUMAH.'{/i}"
-
-# game/story/chapter3.rpy:124
-translate indonesian ch3_scene_pedestals_111d0da5:
-
-    # sera "...A wristwatch. No. The Choir hymns say the Hollow Sovereigns crawl up from the Abyss—"
-    sera "...Jam tangan. Nggak mungkin... Himne Paduan Suara bilang para Penguasa Hampa merayap naik dari Jurang Terkutuk—"
 
 # game/story/chapter3.rpy:125
 translate indonesian ch3_scene_pedestals_725679be:
@@ -108,11 +98,6 @@ translate indonesian ch3_remnant_duel_a437cc2c:
     # narrator "Before the bronze Calibration Plate rises a nine-foot figure of fractured white salt-armor. Weeping violet starlight spills through its cracked visor as a broken halberd scrapes across the flagstones."
     narrator "Di depan Pelat Kalibrasi perunggu, bangkit sesosok raksasa setinggi tiga meter berbaju zirah garam putih yang retak. Cahaya bintang violet menetes pedih dari celah helmnya selagi ujung tombak besarnya berderit menyeret lantai batu."
 
-# game/story/chapter3.rpy:198
-translate indonesian ch3_remnant_duel_e7680d44:
-
-    # remnant "...WHO... CALLS... FOR... DELIVERANCE...?"
-    remnant "...SIAPA... YANG... MEMANGGIL... PENYELAMATAN...?"
 
 # game/story/chapter3.rpy:201
 translate indonesian ch3_remnant_duel_952dbf45:
@@ -138,11 +123,6 @@ translate indonesian ch3_remnant_duel_04178b97:
     # narrator "The giant halberd freezes an inch above Bram's dented shield."
     narrator "Tombak raksasa itu membeku tepat dua sentimeter di atas perisai penyok Bram."
 
-# game/story/chapter3.rpy:222
-translate indonesian ch3_remnant_duel_922dbd28:
-
-    # remnant "...Tacoma...? Rain... on... cedar...?"
-    remnant "...Tacoma...? Hujan... di atas... pohon cemara...?"
 
 # game/story/chapter3.rpy:223
 translate indonesian ch3_remnant_duel_fb86fd61:
@@ -179,3 +159,28 @@ translate indonesian ch3_remnant_duel_d385708d:
 
     # vespera "The northern sky! The Sixth Seal didn't wait for sunset—Cassian's Ascending the Crucible Spire RIGHT NOW! Move!"
     vespera "Lihat langit utara! Segel Keenam nggak nunggu sampai matahari terbenam—Cassian sudah mulai mendaki Menara Kawah SEKARANG JUGA! Cepat lari!"
+# game/story/chapter3.rpy:128
+translate indonesian ch3_scene_pedestals_70269ce3:
+
+    # narrator "{i}'THERE ARE NO DEMON KINGS. {glitch}IT'S JUST US{/glitch} AFTER WE FORGET HOME.'{/i}"
+    narrator "{i}'TIDAK ADA RAJA IBLIS. {glitch}ITU SEMUA HANYA KITA{/glitch} SETELAH KITA LUPA PADA RUMAH.'{/i}"
+
+# game/story/chapter3.rpy:135
+translate indonesian ch3_scene_pedestals_e7cea7b5:
+
+    # sera "...A wristwatch. {shake}No.{/shake} The Choir hymns say the Hollow Sovereigns crawl up from the Abyss—"
+    sera "...Jam tangan. {shake}Nggak mungkin.{/shake} Himne Paduan Suara bilang para Penguasa Hampa merangkak naik dari Jurang—"
+
+# game/story/chapter3.rpy:215
+translate indonesian ch3_remnant_duel_8e2225d5:
+
+    # remnant "{glitch}...WHO... CALLS...{/glitch} FOR... {shake}DELIVERANCE...?{/shake}"
+    remnant "{glitch}...SIAPA... YANG... MEMANGGIL...{/glitch} DEMI... {shake}PENYELAMATAN...?{/shake}"
+
+# game/story/chapter3.rpy:242
+translate indonesian ch3_remnant_duel_3e6d099c:
+
+    # remnant "...Tacoma...? {echo}Rain... on... cedar...?{/echo}"
+    remnant "...Tacoma...? {echo}Hujan... di... pohon aras...?{/echo}"
+
+

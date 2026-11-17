@@ -96,17 +96,7 @@ translate indonesian chapter4_start_885cf652:
     # narrator "My chest constricts. That awful, familiar heat stings behind my nose—twenty-six years old, and a hallucination of sixth grade still makes my hands shake."
     narrator "Dadaku sesak. Rasa panas menyakitkan yang sangat kukenal menusuk di balik hidungku—umur dua puluh enam tahun, dan halusinasi kelas enam SD masih bisa bikin kedua tanganku gemetar hebat."
 
-# game/story/chapter4.rpy:71
-translate indonesian chapter4_start_cc02d802:
 
-    # thought "Wait. Look at my hands. Yes, they're shaking. They shook at the Aqueduct too. They shook in the Archive."
-    thought "Tunggu sebentar. Lihat tanganku. Iya, tanganku memang gemetar. Tanganku juga gemetar di Akuaduk kemarin. Gemetar juga di Arsip Tenggelam."
-
-# game/story/chapter4.rpy:80
-translate indonesian chapter4_start_1c4d8a94:
-
-    # leo "You're right about one thing: I spent way too many years waiting for a fantasy story to fix my life."
-    leo "Kau benar soal satu hal: aku menghabiskan terlalu banyak tahun cuma buat nunggu cerita fantasi datang membenahi hidupku."
 
 # game/story/chapter4.rpy:81
 translate indonesian chapter4_start_49092de9:
@@ -120,17 +110,7 @@ translate indonesian chapter4_start_55da588d:
     # narrator "I fold the wet paper carefully, slip it into my pocket beside my brass laundry token, and walk straight through the rain-shadow."
     narrator "Kulipat kertas basah itu dengan hati-hati, kuselipkan ke saku celana di samping koin kuningan binatuku, lalu kulangkahkan kakiku lurus menembus bayang-bayang hujan."
 
-# game/story/chapter4.rpy:90
-translate indonesian chapter4_start_db12aa3c:
 
-    # leo "SHUT UP!"
-    leo "DIAM KAU!"
-
-# game/story/chapter4.rpy:91
-translate indonesian chapter4_start_8c78e819:
-
-    # narrator "Blinding violet fire erupts from my fist, vaporizing bleachers, rain, fence, and Marcus alike! No shaking. No fear. Only cold, weightless silence where fourth grade used to be."
-    narrator "Kobaran api violet menyilaukan meledak dari tinjuku, melenyapkan tribun, hujan, pagar kawat, dan sosok Marcus sekaligus! Tak ada lagi getaran. Tak ada lagi rasa takut. Cuma ada keheningan dingin dan hampa di tempat masa laluku dulu berada."
 
 # game/story/chapter4.rpy:96
 translate indonesian chapter4_start_d4387908:
@@ -156,11 +136,6 @@ translate indonesian chapter4_start_28145bf7:
     # cassian "Step back, Broker Kael! The northern cliff just dropped into the sea—if the Crucible isn't fed an anchor within two minutes, Bastion falls!"
     cassian "Mundur, Pialang Kael! Tebing utara baru saja runtuh ke laut—jika Kawah tidak diberi jangkar dalam dua menit, Bastion akan hancur lebur!"
 
-# game/story/chapter4.rpy:114
-translate indonesian chapter4_start_ad5ae442:
-
-    # sera "Stay back, Sato! Don't ruin the one thing I'm actually good for!"
-    sera "Menjauh dariku, Sato! Jangan rusak satu-satunya hal berguna yang bisa kulakukan di dunia ini!"
 
 # game/story/chapter4.rpy:115
 translate indonesian chapter4_start_494c9cf5:
@@ -168,11 +143,6 @@ translate indonesian chapter4_start_494c9cf5:
     # narrator "Tears spill down Seraphina's cheeks, evaporating into white salt before they reach her chin."
     narrator "Air mata mengalir deras di pipi Seraphina, seketika menguap menjadi garam putih sebelum sempat menyentuh dagunya."
 
-# game/story/chapter4.rpy:116
-translate indonesian chapter4_start_5185cccd:
-
-    # sera "I can't remember my mom's first name anymore! If I go back to Earth like this, who am I?! At least if I burn here, thirty thousand people live and {i}somebody{/i} remembers Seraphina!"
-    sera "Aku bahkan nggak bisa mengingat nama depan ibuku lagi! Kalau aku pulang ke Bumi dalam keadaan begini, siapa diriku?! Setidaknya kalau aku terbakar di sini, tiga puluh ribu orang bisa tetap hidup dan {i}seseorang{/i} bakal mengingat nama Seraphina!"
 
 # game/story/chapter4.rpy:124
 translate indonesian chapter4_start_b01fa22c:
@@ -241,3 +211,70 @@ translate indonesian strings:
     # game/story/chapter4.rpy:140
     old "(Temptation of the Crown) Step past Seraphina toward the golden pillar myself. \"Get back, Sera. My longing reading was higher than yours—let me take it.\""
     new "(Godaan Mahkota) Melangkah melewati Seraphina menuju pilar emas itu sendiri. \"Mundur, Sera. Angka kerinduanku lebih tinggi darimu—biarkan aku yang menanggungnya.\""
+# game/story/chapter4.rpy:67
+translate indonesian chapter4_start_0233d13c:
+
+    # marcus "Look at what you wanted, Leo: a neat little status screen where {glitch}'Courage' goes up by +1{/glitch} whenever you pick a brave line. A world where people have to like you because you finished their side-quests."
+    marcus "Lihat apa yang sebenarnya kau inginkan, Leo: layar status rapi di mana angka {glitch}'Keberanian' naik +1{/glitch} setiap kali kau memilih kalimat gagah. Dunia di mana orang-orang wajib menyukaimu cuma karena kau menyelesaikan misi sampingan mereka."
+
+# game/story/chapter4.rpy:68
+translate indonesian chapter4_start_598e41db:
+
+    # marcus "{shake}Real life doesn't have an Affinity meter, Sato.{/shake} Tomorrow morning on Earth, your rent is still due, your back still hurts, and nobody claps when you get out of bed."
+    marcus "{shake}Hidup nyata nggak punya meteran Afinitas, Sato.{/shake} Besok pagi di Bumi, uang sewamu tetap jatuh tempo, punggungmu tetap pegal, dan nggak ada seorang pun yang bertepuk tangan waktu kau bangun dari kasur."
+
+# game/story/chapter4.rpy:71
+translate indonesian chapter4_start_89db2cd8:
+
+    # marcus "You already traded your third-grade bicycle to Seraphina just to see your Strength number go up! Admit it—you {i}liked{/i} how light the static felt!"
+    marcus "Kau bahkan sudah menukar ingatan sepeda kelas tiga SD-mu pada Seraphina cuma demi melihat angka Kekuatanmu naik! Akui saja—kau {i}suka{/i} betapa ringannya rasa hampa itu!"
+
+# game/story/chapter4.rpy:80
+translate indonesian chapter4_start_bda1c135:
+
+    # thought "Wait. Look at my hands. Yes, they're {shake}shaking{/shake}. They shook at the Aqueduct too. They shook in the Archive."
+    thought "Tunggu. Lihat tanganku. Iya, tanganku {shake}gemetar{/shake}. Di Akuaduk kemarin juga gemetar. Di Arsip Bawah Tanah juga gemetar."
+
+# game/story/chapter4.rpy:92
+translate indonesian chapter4_start_5f90a1cd:
+
+    # leo "You're right about one thing: I spent way too many years waiting for a fantasy story—or a status screen—to fix my life."
+    leo "Kau benar soal satu hal: aku sudah menghabiskan terlalu banyak tahun menunggu cerita fantasi—atau layar status—untuk memperbaiki hidupku."
+
+# game/story/chapter4.rpy:103
+translate indonesian chapter4_start_61176776:
+
+    # leo "{glitch}SHUT UP!{/glitch}"
+    leo "{glitch}DIAM KAU!{/glitch}"
+
+# game/story/chapter4.rpy:104
+translate indonesian chapter4_start_704d98c4:
+
+    # narrator "Blinding violet fire erupts from my fist, vaporizing bleachers, rain, fence, and Marcus alike! No shaking. No fear. Only cold, weightless {glitch}white silence{/glitch} where fourth grade used to be."
+    narrator "Api ungu menyilaukan meledak dari kepalan tanganku, menguapkan tribun, hujan, pagar kawat, sekaligus bayangan Marcus! Tak ada lagi gemetar. Tak ada rasa takut. Hanya {glitch}keheningan putih{/glitch} yang dingin dan hampa di tempat ingatan kelas empat SD-ku dulu berada."
+
+# game/story/chapter4.rpy:133
+translate indonesian chapter4_start_6349b857:
+
+    # vespera "Tell that to Daniel Cho downstairs, Marshal! We just watched the Fourth Paragon crumble into garden dirt after four centuries of your 'anchor'!"
+    vespera "Katakan itu pada Daniel Cho di bawah sana, Marsekal! Kami baru saja menyaksikan Paragon Keempat luruh jadi tanah kebun setelah empat abad jadi 'jangkar' kalian!"
+
+# game/story/chapter4.rpy:135
+translate indonesian chapter4_start_861b8898:
+
+    # vespera "We just had to put down the Fourth Paragon's salt-husk in the vault below, Marshal! He thanked us when his armor broke!"
+    vespera "Kami baru saja terpaksa menghentikan cangkang garam Paragon Keempat di ruang bawah tanah, Marsekal! Dia mengucapkan terima kasih saat zirahnya pecah!"
+
+# game/story/chapter4.rpy:136
+translate indonesian chapter4_start_81800226:
+
+    # sera "{shake}Stay back, Sato!{/shake} Don't ruin the one thing I'm actually good for!"
+    sera "{shake}Jangan mendekat, Sato!{/shake} Jangan hancurkan satu-satunya hal yang membuat hidupku berguna!"
+
+# game/story/chapter4.rpy:139
+translate indonesian chapter4_start_32be0a89:
+
+    # sera "I can't remember my mom's {glitch}first name{/glitch} anymore! If I go back to Earth like this, who am I?! At least if I burn here, thirty thousand people live and {i}somebody{/i} remembers Seraphina!"
+    sera "Aku bahkan nggak ingat lagi {glitch}nama depan{/glitch} ibuku sendiri! Kalau aku pulang ke Bumi dalam keadaan begini, aku ini siapa?! Setidaknya kalau aku terbakar di sini, tiga puluh ribu orang selamat dan {i}ada{/i} yang mengingat nama Seraphina!"
+
+

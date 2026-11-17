@@ -18,7 +18,9 @@ label chapter5_start:
         jump ending_tragic_pillar
 
     play music audio.bgm_crucible if_changed fadein 1.0
-    scene cg crucible_climax
+    $ set_atmosphere("crucible_sparks")
+    $ clear_panic()
+    scene cg crucible_climax at cam_heavy_quake
     with flash_astral
 
     narrator "Lightning hammers the obsidian summit! Bram locks his tower shield into the fractured rock; Vespera bolts the First-Era Calibration Plate across the roaring conduit while her brass astrolabe spins at white-hot velocity!"
@@ -33,17 +35,22 @@ label chapter5_start:
 
     narrator "Wind howls across the spire. Everything I was as a lonely kid in the mud, everything I feared in Apartment 4B, and everyone standing beside me now narrows to a single heartbeat."
 
+    $ set_phantom_choice("\"Erase Apartment 4B. Erase the rent. Become a god of white salt.\"")
     menu:
         "{font=fonts/DejaVuSans.ttf}★{/font} (Secret True Path) Harmonize all 3 Forgotten Clovers & the Calibrated Astrolabe: Dismantle the Engine and open the Twin-Root Doors!" if (clover_relics_found >= 3 and has_item("recall_astrolabe") and has_flag("trauma_integrated") and tether >= 60):
+            $ clear_panic()
             jump ending_secret_two_doors
 
         "(Hopeful Path) Drive the copper spade into bedrock with everyone together—then take Vespera's Recall home to live my real life!" if tether >= 45:
+            $ clear_panic()
             jump ending_hopeful_grass
 
         "(Bittersweet Path) Clip my brass Earth-anchor onto Seraphina's coat so she makes it home to her mom—and stay behind in Solvara to help rebuild.":
+            $ clear_panic()
             jump ending_bittersweet_gardener
 
         "(Tragic Temptation) Let go of the spade and step into the Crucible's golden fire—become the invincible Seventh Hero so no threat ever touches them again.":
+            $ clear_panic()
             jump ending_tragic_pillar
 
 
@@ -52,8 +59,9 @@ label chapter5_start:
 ## ============================================================================
 label ending_hopeful_grass:
     $ current_chapter_title = "Epilogue: Where the Grass Still Grows"
+    $ set_atmosphere("meadow_spores")
     play sound audio.sfx_astrolabe
-    scene cg crucible_climax
+    scene cg crucible_climax at cam_reset
     with flash_meadow
 
     leo "NOBODY TURNS INTO SALT TONIGHT! ON THREE, BRAM—ONE, TWO, GROUND IT!"
@@ -64,7 +72,7 @@ label ending_hopeful_grass:
     stop music fadeout 1.5
     play music audio.bgm_epilogue fadein 2.0
 
-    scene bg salt_ruins
+    scene bg salt_ruins at cam_reset
     with Dissolve(1.2)
 
     $ current_location_name = "Cindervale Ridge • Dawn"
@@ -85,6 +93,7 @@ label ending_hopeful_grass:
     narrator "Her voice cracks on the last word. She steps forward, taps my collarbone lightly with her brass astrolabe, and gives me a real, unguarded smile."
     vespera "Go home, Leo. Breathe through your nose."
 
+    $ set_atmosphere(None)
     scene black
     with flash_white
     pause 0.8
@@ -92,23 +101,27 @@ label ending_hopeful_grass:
     ## EARTH RETURN — DAWN PARK
     $ hud_visible = False
     play ambience audio.amb_birds fadein 1.8
-    scene bg rainy_alley
+    scene bg rainy_alley at cam_reset
     with Dissolve(1.2)
 
     narrator "6:12 AM. Eastside Coin Laundry."
     narrator "Rain has stopped. Through the glass, Dryer #4 sits quiet, my gray hoodie neatly folded on top by an early-shift grandmother. My knees still click when I stand up. My checking account still has forty-three dollars and eighteen cents."
     narrator "Half a block toward Apartment 4B, a middle-school kid in an oversized backpack trips on the curb—scattering tangerines and geometry flashcards across the wet sidewalk while two older boys by the bus stop snicker and pull out their phones."
 
-    play sound audio.sfx_heartbeat
-    narrator "My stomach knots automatically. Old muscle memory whispers: {i}Cross the street. Don't make eye contact.{/i}"
+    $ set_panic(1, ["Cross the street.", "Don't make eye contact."], sfx="heartbeat")
+    scene bg rainy_alley at cam_dutch_unease
+    narrator "My stomach knots automatically. Old muscle memory whispers: {i}{shake}Cross the street.{/shake} Don't make eye contact.{/i}"
     narrator "No sword. No copper spade. Just me in a damp olive windbreaker."
+    $ clear_panic()
+    scene bg rainy_alley at cam_reset
     narrator "I walk right over, crouch down beside the kid, and start gathering tangerines."
 
     leo "Hey—none of 'em split open. Here's your protractor. You good?"
     kid "...Y-yeah. Thanks, mister."
     narrator "I glance calmly up at the two teenagers by the bus shelter. My hands tremble maybe half a millimeter—and they mutter, pocket their phones, and look away."
 
-    scene cg morning_grass
+    $ set_atmosphere("meadow_spores")
+    scene cg morning_grass at cam_reset
     with Dissolve(1.5)
 
     narrator "On the walk back, instead of climbing straight up to Apartment 4B, I turn into the small neighborhood park at the corner."
@@ -127,8 +140,9 @@ label ending_hopeful_grass:
 ## ============================================================================
 label ending_bittersweet_gardener:
     $ current_chapter_title = "Epilogue: The Quiet Gardener"
+    $ set_atmosphere("meadow_spores")
     play sound audio.sfx_astrolabe
-    scene cg crucible_climax
+    scene cg crucible_climax at cam_reset
     with flash_meadow
 
     narrator "As the copper spade locks into bedrock and the storm breaks into silver mist, Vespera's astrolabe screams a warning—only {i}one{/i} Earth-tether slot remains stable before the Recall ring fuses shut forever!"
@@ -142,7 +156,7 @@ label ending_bittersweet_gardener:
     stop music fadeout 1.5
     play music audio.bgm_conservatory fadein 2.0
 
-    scene bg orin_conservatory
+    scene bg orin_conservatory at cam_reset
     with flash_white
 
     $ hud_visible = False
@@ -150,14 +164,14 @@ label ending_bittersweet_gardener:
 
     narrator "Three autumns pass in Cindervale."
 
-    scene cg conservatory_clover
+    scene cg conservatory_clover at cam_reset
     with Dissolve(1.4)
 
     narrator "Nobody in Thornwick calls me 'Sir Leo' or sings ballads when I walk through Charter Square. Honestly, Clerk Fen still audits my compost receipts twice a month."
     narrator "Sometimes late on rainy Tuesday nights, lying awake above the Crooked Lantern, a quiet ache settles in my chest for fluorescent convenience stores, the hum of refrigerators, and a small kitchen table on a world I can never walk back to."
     narrator "Then morning comes."
 
-    scene bg thornwick_square
+    scene bg thornwick_square at cam_reset
     with Dissolve(1.0)
 
     show vespera soft at stage_left
@@ -185,8 +199,9 @@ label ending_tragic_pillar:
     stop music fadeout 0.6
     play sound audio.sfx_rift
     play music audio.bgm_crucible fadein 1.0
+    $ set_atmosphere("crucible_sparks")
 
-    scene bg crucible_spire
+    scene bg crucible_spire at cam_dutch_panic
     with flash_astral
 
     narrator "No more shaking knees. No more being small, ordinary, forgettable Leo Sato."
@@ -198,22 +213,29 @@ label ending_tragic_pillar:
     narrator "Blinding celestial armor weaves itself across my shoulders! Strength beyond every ballad floods my veins! Down along the Bastion cliffs, three thousand Ashen Vigil soldiers drop to their knees in awe as a single sweep of my radiant hand vaporizes the entire Hollow Tide from horizon to horizon!"
 
     thought "Look at me, Marcus. Look at me, everybody. Nobody can ever laugh at me again."
-    thought "...Wait. Who was Marcus?"
+    stop music fadeout 0.2
+    play sound audio.sfx_subdrop
+    $ set_panic(2, ["MARCUS: [RECORD DELETED]", "IDENTITY SECTOR: 64% OVERWRITTEN"], sfx="tinnitus")
+    thought "...Wait. Who was {glitch}Marcus{/glitch}?"
 
-    play sound audio.sfx_heartbeat
+    play sound audio.sfx_static
+    $ set_panic(3, ["APARTMENT_4B: [NULL]", "VESPERA_KAEL: [UNRECOGNIZED]", "TETHER: 00.0%"], sfx="tinnitus")
     with flash_white
 
     narrator "Something warm slips out of my chest like sand through torn pockets."
-    thought "Wait—Apartment 4B. No, 4... something. There was a girl with scarred wrists shouting my name. What was her name? Vespera? Why is she crying?"
+    thought "Wait—Apartment {glitch}4B{/glitch}. No, 4... something. There was a girl with scarred wrists shouting my name. What was her name? {glitch}Vespera?{/glitch} Why is she crying?"
 
     $ leo_display_name = "The Seventh Paragon"
+    $ current_location_name = "SECTOR_07 // CRUCIBLE_ANCHOR"
 
-    leo "FEAR NOT, CITIZENS OF CINDERVALE. THE DELIVERANCE IS COMPLETE."
-    thought "That wasn't my voice. Wait—what did grass smell like? Mom? Hold on, please, give me back just one—"
+    leo "{glitch}FEAR NOT, CITIZENS OF CINDERVALE.{/glitch} THE DELIVERANCE IS COMPLETE."
+    thought "That wasn't my voice. Wait—what did {glitch}grass{/glitch} smell like? {shake}Mom?{/shake} Hold on, please, give me back just one—"
 
+    $ clear_panic()
+    $ set_atmosphere("salt_ash")
     stop music fadeout 2.0
     play ambience audio.amb_wind fadein 1.5
-    scene bg salt_ruins
+    scene bg salt_ruins at cam_reset
     with Fade(0.8, 1.0, 1.5, color="#ffffff")
 
     $ hud_visible = False
@@ -237,8 +259,9 @@ label ending_tragic_pillar:
 ## ============================================================================
 label ending_secret_two_doors:
     $ current_chapter_title = "True Epilogue: The Two Doors"
+    $ set_atmosphere("meadow_spores")
     play sound audio.sfx_astrolabe
-    scene cg crucible_climax
+    scene cg crucible_climax at cam_reset
     with flash_meadow
 
     leo "Vespera—clip all three First-Era Clovers into the outer ring! Orin, open the Conservatory sluice! Bram, Sera, Marshal—ON ME!"
@@ -249,7 +272,7 @@ label ending_secret_two_doors:
     stop music fadeout 1.2
     play music audio.bgm_epilogue fadein 2.0
 
-    scene bg thornwick_square
+    scene bg thornwick_square at cam_reset
     with flash_meadow
 
     $ hud_visible = False
@@ -264,7 +287,7 @@ label ending_secret_two_doors:
 
     narrator "Because the Twin-Root Bypass harmonized gently with Master Orin's Conservatory, nobody gets left behind: both Seraphina and I walk calmly through the warm cedar-framed seam the next morning—carrying all our memories, and leaving behind a tiny six-inch 'Postbox Seam' beneath Orin's potting bench."
 
-    scene bg earth_dawn_park
+    scene bg earth_dawn_park at cam_reset
     with Dissolve(1.4)
 
     play ambience audio.amb_birds fadein 1.5
@@ -281,7 +304,7 @@ label ending_secret_two_doors:
     narrator "Beside a thriving patch of white three-leaf clover sits a small waxed-parchment envelope smelling faintly of toasted cumin and silver-solder:"
     narrator "{i}'Question-Mark & Starlight: Ditch B passed inspection. Twenty acres of Oakhaven grew real apple blossoms this week. Bram says peel your garlic properly, and Orin says step outside before noon. — V.K.'{/i}"
 
-    scene cg morning_grass
+    scene cg morning_grass at cam_reset
     with Dissolve(1.5)
 
     narrator "I kick off my canvas sneakers beside the wooden bench, step barefoot into the cool morning grass, and breathe in the smell of wet earth, coffee, and ordinary sunlight."
@@ -297,6 +320,8 @@ label ending_secret_two_doors:
 ## FINAL QUIET PLAYER REFLECTION SCREEN
 ## ============================================================================
 label final_window_reflection(ending_banner_text):
+    $ clear_panic()
+    $ set_atmosphere(None)
     stop ambience fadeout 2.5
     scene black
     with Dissolve(1.8)

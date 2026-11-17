@@ -16,7 +16,9 @@ label chapter4_start:
 
     play music audio.bgm_crucible fadein 1.5
     play ambience audio.amb_wind fadein 1.2
-    scene bg crucible_spire
+    $ set_atmosphere("crucible_sparks")
+    $ clear_panic()
+    scene bg crucible_spire at cam_dutch_unease
     with Dissolve(1.0)
 
     narrator "Above Fort Bastion, the sky has torn open into a cathedral of swirling violet ash and blinding gold rings. Every breath tastes of static and cold pennies."
@@ -41,26 +43,33 @@ label chapter4_start:
         orin "I've wired the Conservatory's deep cisterns to the lower conduit! Get that Calibration Plate to the summit—and watch your minds inside the Hollow mist!"
 
     ## ------------------------------------------------------------------------
-    ## THE HOLLOW THRESHOLD: CHILDHOOD BLEACHER ECHO (MARCUS)
+    ## THE HOLLOW THRESHOLD: CHILDHOOD BLEACHER ECHO & META-ESCAPISM MIRROR
     ## ------------------------------------------------------------------------
-    play sound audio.sfx_rift
-    scene bg childhood_bleachers
+    stop music fadeout 0.2
+    play sound audio.sfx_subdrop
+    $ set_atmosphere("rain")
+    $ set_panic(2, ["Twenty-six and still pretending.", "Click a button to feel brave.", "Nobody is coming for you."], sfx="panic")
+    scene bg childhood_bleachers at cam_heartbeat_zoom
     with flash_crimson
 
     $ current_location_name = "Echo Within the Hollow Seam"
     narrator "One step across the Spire's inner ward, Solvara vanishes."
     narrator "Cold October rain soaks through my knees. Rust. Wet aluminum bleachers. The torn mustard-yellow page of {i}Sir Valorian{/i} floats in a muddy puddle two inches from my face."
 
-    play sound audio.sfx_heartbeat
-    show leo nervous at stage_left, tremble
+    play sound audio.sfx_tinnitus
+    show leo nervous at stage_left, sprite_shiver_loop
     with Dissolve(0.3)
 
     marcus "Seriously, Sato? Twenty-six years old and you {i}still{/i} carry that pathetic notebook around?"
 
     narrator "A figure coalesces out of grey rain and salt-static—wearing Marcus's sixth-grade letter jacket, speaking in a voice braided from every manager, landlord, and late-night intrusive thought I've ever had."
     marcus "Look at you. Couldn't make friends, couldn't ask for chopsticks, couldn't build a real life—so you prayed for a magic world where strangers have to care about you!"
+    marcus "Look at what you wanted, Leo: a neat little status screen where {glitch}'Courage' goes up by +1{/glitch} whenever you pick a brave line. A world where people have to like you because you finished their side-quests."
+    marcus "{shake}Real life doesn't have an Affinity meter, Sato.{/shake} Tomorrow morning on Earth, your rent is still due, your back still hurts, and nobody claps when you get out of bed."
 
-    if has_flag("childhood_vow_power"):
+    if has_flag("took_sera_starlight"):
+        marcus "You already traded your third-grade bicycle to Seraphina just to see your Strength number go up! Admit it—you {i}liked{/i} how light the static felt!"
+    elif has_flag("childhood_vow_power"):
         marcus "Remember what you swore in the mud? 'Someday I'll be strong enough that nobody laughs!' Well, the Crucible's right upstairs! Drink the fire! Show everybody!"
     elif has_flag("childhood_vow_watchful"):
         marcus "Still counting footsteps and looking for the back exit, coward? Keep running home the long way!"
@@ -68,16 +77,19 @@ label chapter4_start:
         marcus "Still moving earthworms out of puddles so you can pretend being weak is the same thing as being kind?"
 
     narrator "My chest constricts. That awful, familiar heat stings behind my nose—twenty-six years old, and a hallucination of sixth grade still makes my hands shake."
-    thought "Wait. Look at my hands. Yes, they're shaking. They shook at the Aqueduct too. They shook in the Archive."
+    thought "Wait. Look at my hands. Yes, they're {shake}shaking{/shake}. They shook at the Aqueduct too. They shook in the Archive."
 
+    $ set_phantom_choice("\"Let the Crucible eat Leo Sato. Give me Sir Valorian's golden armor.\"")
     menu:
         "Pick up the muddy notebook page—shaking hands and all—and refuse to hate the kid who drew it. \"Yeah, it hurt. And I don't need a crown to stand up anymore.\"":
+            $ clear_panic()
+            scene bg childhood_bleachers at cam_reset
             $ set_flag("trauma_integrated")
             $ unlock_achievement("ach_marcus_faced")
             $ change_stat("courage", 2, "Stood up without pretending the scar never hurt.")
             $ change_tether(12, "Accepted both the wounded kid and the flawed adult.")
             show leo resolute at stage_left
-            leo "You're right about one thing: I spent way too many years waiting for a fantasy story to fix my life."
+            leo "You're right about one thing: I spent way too many years waiting for a fantasy story—or a status screen—to fix my life."
             leo "That nine-year-old kid in the mud wasn't pathetic for wanting someone to save him. He was just lonely. And he doesn't live under these bleachers anymore."
             narrator "I fold the wet paper carefully, slip it into my pocket beside my brass laundry token, and walk straight through the rain-shadow."
 
@@ -85,12 +97,16 @@ label chapter4_start:
             $ change_resonance(28, "Drank the Spire's raw Resonance to silence humiliation!")
             $ change_tether(-18, "Incinerated the memory of Eastside Elementary—and half your childhood with it.")
             $ change_stat("strength", 2, "Surging mythic power fills your limbs.")
-            play sound audio.sfx_rift
+            play sound audio.sfx_static
+            $ set_panic(3, ["EASTSIDE_ELEMENTARY: [PURGED]", "GRADE_04: NULL", "PAIN SUPPRESSED"], sfx="tinnitus")
             with flash_astral
-            leo "SHUT UP!"
-            narrator "Blinding violet fire erupts from my fist, vaporizing bleachers, rain, fence, and Marcus alike! No shaking. No fear. Only cold, weightless silence where fourth grade used to be."
+            leo "{glitch}SHUT UP!{/glitch}"
+            narrator "Blinding violet fire erupts from my fist, vaporizing bleachers, rain, fence, and Marcus alike! No shaking. No fear. Only cold, weightless {glitch}white silence{/glitch} where fourth grade used to be."
+            $ clear_panic()
 
         "Keep my head down, clutch Orin's copper spade like a lifeline, and push blindly through the mist (-5%% Tether, +1 Courage).":
+            $ clear_panic()
+            scene bg childhood_bleachers at cam_reset
             $ change_stat("courage", 1, "Forced one boot in front of the other through panic.")
             $ change_tether(-5, "The echo's barbs drew blood, but didn't stop you.")
             leo "Vespera and Bram are waiting upstairs. Talk all you want—I'm walking."
@@ -99,11 +115,13 @@ label chapter4_start:
     ## SUMMIT THRESHOLD: SERAPHINA AT THE BRINK
     ## ------------------------------------------------------------------------
     $ current_location_name = "Crucible Altar Ring"
-    scene bg crucible_spire
+    $ set_atmosphere("crucible_sparks")
+    play music audio.bgm_crucible fadein 1.0
+    scene bg crucible_spire at cam_heavy_quake
     with flash_white
 
     show cassian weary at stage_left
-    show sera fragile at stage_center
+    show sera fragile at stage_center, sprite_shiver_loop
     show vespera sharp at stage_right
     with Dissolve(0.4)
 
@@ -111,12 +129,19 @@ label chapter4_start:
     narrator "High Marshal Cassian stands with bare steel lowered in salute; three paces ahead of him, Seraphina stands on the lip of the dais, her cobalt coat already dissolving into motes of silver ash at the hem."
 
     cassian "Step back, Broker Kael! The northern cliff just dropped into the sea—if the Crucible isn't fed an anchor within two minutes, Bastion falls!"
-    sera "Stay back, Sato! Don't ruin the one thing I'm actually good for!"
+    if has_flag("daniel_pacified"):
+        vespera "Tell that to Daniel Cho downstairs, Marshal! We just watched the Fourth Paragon crumble into garden dirt after four centuries of your 'anchor'!"
+    elif has_flag("daniel_shattered"):
+        vespera "We just had to put down the Fourth Paragon's salt-husk in the vault below, Marshal! He thanked us when his armor broke!"
+    sera "{shake}Stay back, Sato!{/shake} Don't ruin the one thing I'm actually good for!"
+    $ set_panic(2, ["MOTHER_NAME: [CORRUPTED]", "BE A STATUE FOREVER", "DON'T LET THEM FORGET ME"], sfx="tinnitus")
     narrator "Tears spill down Seraphina's cheeks, evaporating into white salt before they reach her chin."
-    sera "I can't remember my mom's first name anymore! If I go back to Earth like this, who am I?! At least if I burn here, thirty thousand people live and {i}somebody{/i} remembers Seraphina!"
+    sera "I can't remember my mom's {glitch}first name{/glitch} anymore! If I go back to Earth like this, who am I?! At least if I burn here, thirty thousand people live and {i}somebody{/i} remembers Seraphina!"
 
     menu:
         "(Remind Her of Home) \"Chicago! Lakeshore buses hissing in November rain—and hot tea with LEMON! Step off that ledge, Sera—we brought the First-Era Plate!\"" if has_flag("sera_opened_up") or has_stat("empathy", 6):
+            $ clear_panic()
+            scene bg crucible_spire at cam_reset
             $ set_flag("sera_anchored")
             $ unlock_achievement("ach_sera_saved")
             $ change_affinity("sera", 4, "Pulled her back from total self-erasure!")
@@ -127,6 +152,8 @@ label chapter4_start:
             sera "...Lemon. Her name is Mei-Ling. Oh god—her name is Mei-Ling!"
 
         "(Rally With Grit) Plant Orin's copper spade right between Sera and the fire! \"Marshal Cassian! Help us bolt this Calibration Plate down—we're grounding the Crucible, not feeding it!\"":
+            $ clear_panic()
+            scene bg crucible_spire at cam_reset
             if has_stat("courage", 4) or get_affinity("cassian") >= 1:
                 $ set_flag("sera_anchored")
                 $ unlock_achievement("ach_sera_saved")
@@ -138,6 +165,7 @@ label chapter4_start:
                 narrator "Bram lunges forward, hooking Seraphina's collar back from the flames just as a shockwave cracks the altar stone in half!"
 
         "(Temptation of the Crown) Step past Seraphina toward the golden pillar myself. \"Get back, Sera. My longing reading was higher than yours—let me take it.\"":
+            $ clear_panic()
             $ set_flag("chose_crown_early")
             $ change_resonance(35, "Stepped willingly toward the Mythic Crown.")
             $ change_tether(-25, "Surrendered human smallness for blinding power.")

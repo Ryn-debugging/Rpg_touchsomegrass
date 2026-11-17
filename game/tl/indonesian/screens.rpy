@@ -349,3 +349,134 @@ translate indonesian strings:
     # game/screens.rpy:901
     old "Fast-Forwarding"
     new "Mempercepat Dialog"
+    # game/screens.rpy:207
+    old "— No. I am done letting that voice choose for me."
+    new "— Tidak. Aku sudah muak membiarkan suara itu memilih untukku."
+
+    # Phantom Intrusive Choices (director_fx.rpy)
+    old "Grab a jagged rock from the mud and smash Marcus's teeth in."
+    new "Ambil batu tajam dari lumpur dan hantam gigi Marcus sampai rontok."
+
+    old "\"Stand aside, NPC! I am the Seventh Hero of Legend!\" (Wait—don't actually say that)"
+    new "\"Minggir kau, NPC! Aku adalah Pahlawan Ketujuh dari Legenda!\" (Tunggu—jangan beneran ngomong gitu)"
+
+    old "\"Let the Crucible eat Leo Sato. Give me Sir Valorian's golden armor.\""
+    new "\"Biarkan Kawah ini melahap Leo Sato. Berikan aku zirah emas Sir Valorian.\""
+
+    old "\"Erase Apartment 4B. Erase the rent. Become a god of white salt.\""
+    new "\"Hapus Apartemen 4B. Hapus uang sewa. Jadilah dewa garam putih.\""
+
+    # Floating Intrusive Whispers (director_fx.rpy)
+    old "Stay down."
+    new "Tetap menunduk."
+
+    old "Don't let them see your face."
+    new "Jangan biarkan mereka melihat wajahmu."
+
+    old "Statues don't bleed."
+    new "Patung tidak bisa berdarah."
+
+    old "Cellar timber cracking..."
+    new "Kayu ruang bawah tanah retak..."
+
+    old "Can't breathe—can't move—"
+    new "Sesak—nggak bisa gerak—"
+
+    old "Hold the beam!"
+    new "Tahan balok kayunya!"
+
+    old "ELEMENTARY SCHOOL: [REDACTED]"
+    new "SEKOLAH DASAR: [TERHAPUS]"
+
+    old "MEMORY SECTOR GRAZED"
+    new "SEKTOR INGATAN TERGORES"
+
+    old "HOLD THE SPADE"
+    new "TAHAN SEKOPNYA"
+
+    old "LEXICON ENTRY: [MISSING]"
+    new "ENTRI KOSAKATA: [HILANG]"
+
+    old "CITRUS_NOUN: ERASED"
+    new "KATA_BENDA_JERUK: TERHAPUS"
+
+    old "ASTRAL BLEED: 14%"
+    new "KEBOCORAN ASTRAL: 14%"
+
+    old "CHILDHOOD_BICYCLE: [DELETED]"
+    new "SEPEDA_MASA_KECIL: [DIHAPUS]"
+
+    old "STRENGTH +2 // TETHER -10"
+    new "KEKUATAN +2 // JANGKAR -10"
+
+    old "NO DEMON KINGS"
+    new "TIDAK ADA RAJA IBLIS"
+
+    old "IT'S JUST US"
+    new "ITU SEMUA HANYA KITA"
+
+    old "PARAGON III // CALAMITY III"
+    new "PARAGON III // BENCANA III"
+
+    old "Twenty-six and still pretending."
+    new "Umur dua puluh enam dan masih pura-pura."
+
+    old "Click a button to feel brave."
+    new "Klik satu tombol biar merasa berani."
+
+    old "Nobody is coming for you."
+    new "Nggak ada siapa pun yang bakal datang menolongmu."
+
+    old "EASTSIDE_ELEMENTARY: [PURGED]"
+    new "SD_EASTSIDE: [DIMUSNAHKAN]"
+
+    old "GRADE_04: NULL"
+    new "KELAS_04: NIHIL"
+
+    old "PAIN SUPPRESSED"
+    new "RASA SAKIT DITEKAN"
+
+    old "MOTHER_NAME: [CORRUPTED]"
+    new "NAMA_IBU: [RUSAK]"
+
+    old "BE A STATUE FOREVER"
+    new "JADILAH PATUNG SELAMANYA"
+
+    old "DON'T LET THEM FORGET ME"
+    new "JANGAN BIARKAN MEREKA MELUPAKANKU"
+
+    old "Cross the street."
+    new "Menyeberang jalan saja."
+
+    old "Don't make eye contact."
+    new "Jangan tatap mata mereka."
+
+    old "MARCUS: [RECORD DELETED]"
+    new "MARCUS: [REKAMAN DIHAPUS]"
+
+    old "IDENTITY SECTOR: 64% OVERWRITTEN"
+    new "SEKTOR IDENTITAS: 64% TERTIMPA"
+
+    old "APARTMENT_4B: [NULL]"
+    new "APARTEMEN_4B: [NIHIL]"
+
+    old "VESPERA_KAEL: [UNRECOGNIZED]"
+    new "VESPERA_KAEL: [TAK DIKENALI]"
+
+    old "TETHER: 00.0%"
+    new "JANGKAR: 00.0%"
+
+    old "SECTOR_07 // CRUCIBLE_ANCHOR"
+    new "SEKTOR_07 // JANGKAR_KAWAH"
+
+    # New Choice Notification Reasons
+    old "Refused the call to adventure on principle."
+    new "Menolak panggilan petualangan demi prinsip waras."
+
+    old "Chose damp Earth asphalt over a lethal fantasy."
+    new "Memilih aspal basah Bumi ketimbang fantasi mematikan."
+
+    old "The Seventh Paragon"
+    new "Paragon Ketujuh"
+
+

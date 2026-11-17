@@ -86,3 +86,8 @@ define audio.sfx_astrolabe = "audio/sfx/astrolabe_lock.ogg"
 define audio.sfx_strike = "audio/sfx/spade_clash.ogg"
 define audio.sfx_heal = "audio/sfx/meadow_breath.ogg"
 define audio.sfx_heartbeat = "audio/sfx/anxious_heartbeat.ogg"
+define audio.sfx_tinnitus = "audio/sfx/tinnitus_ring.ogg"
+define audio.sfx_static = "audio/sfx/static_burst.ogg"
+define audio.sfx_subdrop = "audio/sfx/deep_sub_drop.ogg"
+define audio.sfx_panic_loop = "audio/sfx/muffled_heartbeat_loop.ogg"
+

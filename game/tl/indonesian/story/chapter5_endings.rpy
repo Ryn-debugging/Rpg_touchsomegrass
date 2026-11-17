@@ -132,11 +132,6 @@ translate indonesian ending_hopeful_grass_739caf04:
     # narrator "Half a block toward Apartment 4B, a middle-school kid in an oversized backpack trips on the curb—scattering tangerines and geometry flashcards across the wet sidewalk while two older boys by the bus stop snicker and pull out their phones."
     narrator "Separuh blok menuju Apartemen 4B, seorang anak SMP dengan ransel kebesaran tersandung trotoar basah. Kotak pensilnya terlempar, pulpen dan busur derajatnya berhamburan ke genangan air hujan."
 
-# game/story/chapter5_endings.rpy:103
-translate indonesian ending_hopeful_grass_dfb93351:
-
-    # narrator "My stomach knots automatically. Old muscle memory whispers: {i}Cross the street. Don't make eye contact.{/i}"
-    narrator "Perutku otomatis terasa mulas. Ingatan masa kecilku berbisik cemas: {i}Tundukkan kepalamu. Jangan cari gara-gara. Patung tidak ditendang dua kali.{/i}"
 
 # game/story/chapter5_endings.rpy:104
 translate indonesian ending_hopeful_grass_192d7fe8:
@@ -324,11 +319,6 @@ translate indonesian ending_tragic_pillar_0eeb79a2:
     # thought "Look at me, Marcus. Look at me, everybody. Nobody can ever laugh at me again."
     thought "Lihat aku sekarang, Marcus. Lihat aku, semuanya. Sekarang nggak bakal ada lagi yang berani menertawakanku seumur hidup."
 
-# game/story/chapter5_endings.rpy:201
-translate indonesian ending_tragic_pillar_5532d953:
-
-    # thought "...Wait. Who was Marcus?"
-    thought "...Tunggu dulu. Marcus itu siapa ya?..."
 
 # game/story/chapter5_endings.rpy:206
 translate indonesian ending_tragic_pillar_91167c88:
@@ -336,23 +326,8 @@ translate indonesian ending_tragic_pillar_91167c88:
     # narrator "Something warm slips out of my chest like sand through torn pockets."
     narrator "Sesuatu yang hangat mengalir keluar dari dadaku bagai pasir yang bocor dari saku robek."
 
-# game/story/chapter5_endings.rpy:207
-translate indonesian ending_tragic_pillar_743c4a1f:
 
-    # thought "Wait—Apartment 4B. No, 4... something. There was a girl with scarred wrists shouting my name. What was her name? Vespera? Why is she crying?"
-    thought "Tunggu sebentar—Apartemen 4B. Bukan, 4... apa tadi ya? Ada seorang gadis bermantel gelap dengan bekas luka di pergelangan tangannya... namanya siapa ya?..."
 
-# game/story/chapter5_endings.rpy:211
-translate indonesian ending_tragic_pillar_4ae93721:
-
-    # leo "FEAR NOT, CITIZENS OF CINDERVALE. THE DELIVERANCE IS COMPLETE."
-    leo "JANGAN TAKUT, WAHAI RAKYAT CINDERVALE. PENYELAMATAN KALIAN TELAH SEMPURNA."
-
-# game/story/chapter5_endings.rpy:212
-translate indonesian ending_tragic_pillar_503adacf:
-
-    # thought "That wasn't my voice. Wait—what did grass smell like? Mom? Hold on, please, give me back just one—"
-    thought "Itu bukan suaraku. Tunggu—aroma rumput basah itu seperti apa ya? Ibu? Tunggu dulu..."
 
 # game/story/chapter5_endings.rpy:223
 translate indonesian ending_tragic_pillar_ca843bfc:
@@ -521,3 +496,34 @@ translate indonesian strings:
     # game/story/chapter5_endings.rpy:46
     old "(Tragic Temptation) Let go of the spade and step into the Crucible's golden fire—become the invincible Seventh Hero so no threat ever touches them again."
     new "(Godaan Tragis) Lepaskan sekop dan melangkahlah ke kobaran api emas Kawah—jadilah Pahlawan Ketujuh yang tak terkalahkan agar marabahaya tak menyentuh mereka lagi."
+# game/story/chapter5_endings.rpy:113
+translate indonesian ending_hopeful_grass_64672f06:
+
+    # narrator "My stomach knots automatically. Old muscle memory whispers: {i}{shake}Cross the street.{/shake} Don't make eye contact.{/i}"
+    narrator "Perutku langsung menegang secara refleks. Ingatan otot lamaku berbisik: {i}{shake}Menyeberang jalan saja.{/shake} Jangan tatap mata mereka.{/i}"
+
+# game/story/chapter5_endings.rpy:219
+translate indonesian ending_tragic_pillar_6d04e22d:
+
+    # thought "...Wait. Who was {glitch}Marcus{/glitch}?"
+    thought "...Tunggu. Siapa itu {glitch}Marcus{/glitch}?"
+
+# game/story/chapter5_endings.rpy:226
+translate indonesian ending_tragic_pillar_894fc830:
+
+    # thought "Wait—Apartment {glitch}4B{/glitch}. No, 4... something. There was a girl with scarred wrists shouting my name. What was her name? {glitch}Vespera?{/glitch} Why is she crying?"
+    thought "Tunggu—Apartemen {glitch}4B{/glitch}. Bukan, 4... berapa tadi. Ada seorang gadis dengan pergelangan tangan penuh bekas luka yang meneriakkan namaku. Siapa namanya? {glitch}Vespera?{/glitch} Kenapa dia menangis?"
+
+# game/story/chapter5_endings.rpy:231
+translate indonesian ending_tragic_pillar_3fb51da2:
+
+    # leo "{glitch}FEAR NOT, CITIZENS OF CINDERVALE.{/glitch} THE DELIVERANCE IS COMPLETE."
+    leo "{glitch}JANGAN TAKUT, WAHAI WARGA CINDERVALE.{/glitch} PENYELAMATAN TELAH PARIPURNA."
+
+# game/story/chapter5_endings.rpy:232
+translate indonesian ending_tragic_pillar_7606fbca:
+
+    # thought "That wasn't my voice. Wait—what did {glitch}grass{/glitch} smell like? {shake}Mom?{/shake} Hold on, please, give me back just one—"
+    thought "Barusan itu bukan suaraku. Tunggu—seperti apa bau {glitch}rumput{/glitch}? {shake}Bu?{/shake} Tunggu sebentar, kumohon, kembalikan satu saja ingatanku—"
+
+

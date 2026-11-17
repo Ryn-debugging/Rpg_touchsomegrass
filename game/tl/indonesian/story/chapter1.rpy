@@ -558,11 +558,6 @@ translate indonesian ch1_aqueduct_climax_91ebb958:
     # vespera "Leo! Get your question-mark spine over here and plant Orin's spade in the conduit!"
     vespera "Leo! Bawa punggung bungkukmu ke sini dan tancapkan sekop Kakek Orin ke saluran!"
 
-# game/story/chapter1.rpy:480
-translate indonesian ch1_aqueduct_climax_92ce814e:
-
-    # thought "My knees are shaking so hard my dryer token is jingling in my pocket. Every instinct from twenty-six years says step back and let the real adults handle it."
-    thought "Lututku gemetar hebat sampai koin binatu di sakuku berdenting. Semua naluriku selama dua puluh enam tahun menyuruhku mundur dan membiarkan orang dewasa yang mengatasinya."
 
 # game/story/chapter1.rpy:481
 translate indonesian ch1_aqueduct_climax_6d9e1eed:
@@ -612,11 +607,6 @@ translate indonesian ch1_aqueduct_climax_53907cc4:
     # narrator "The third ring slips—violet static explodes across the arch! Rather than dive clear and let the wave hit the terraces, I throw my weight over the copper spade while Bram slams his tower shield over us both!"
     narrator "Cincin ketiga tergelincir—letupan energi violet meledak di lengkungan batu! Bukannya melompat kabur dan membiarkan gelombangnya menghantam ladang warga, kubebankan seluruh berat tubuhku menekan sekop tembaga sementara Bram membanting perisai besarnya melindungi kami berdua!"
 
-# game/story/chapter1.rpy:524
-translate indonesian ch1_aqueduct_climax_96fb1712:
-
-    # narrator "For one terrifying second I forget the name of my elementary school—then Vespera kicks the emergency ground-spike home, snuffing the rift in a cloud of white steam."
-    narrator "Selama satu detik yang mengerikan, aku sempat lupa nama SD-ku sendiri—lalu Vespera menendang pasak pembumian darurat sampai amblas, memadamkan celah dalam kepulan uap putih tebal."
 
 # game/story/chapter1.rpy:526
 translate indonesian ch1_aqueduct_climax_23135df3:
@@ -731,4 +721,53 @@ translate indonesian strings:
     # game/story/chapter1.rpy:417
     old "Audit Clerk Fen's Concordat grain-tithe ledger with six years of spreadsheet muscle memory (+Intelligence, +Charisma)."
     new "Audit buku besar upeti gandum Konkordat milik Juru Tulis Fen berbekal enam tahun ingatan otot mengurus tabel data (+Kecerdasan, +Karisma)."
+
+# game/story/chapter1.rpy:97
+translate indonesian chapter1_start_fa9438e2:
+
+    # narrator "I pivot on my soggy heel and take four determined strides back toward the scorched basalt depression where I woke up."
+    narrator "Aku memutar tumitku yang basah kuyup dan melangkah empat tindak penuh tekad kembali ke arah cekungan basal hangus tempatku terbangun tadi."
+
+# game/story/chapter1.rpy:102
+translate indonesian chapter1_start_b5f8d58d:
+
+    # narrator "A hair-thin filament of violet static snaps across my sneaker toe. Instantly, the rubber aglet of my shoelace turns to brittle white salt-glass and shatters with a {i}tink{/i}."
+    narrator "Sehelai filamen statis ungu setipis rambut menyambar ujung sepatuku. Seketika, ujung plastik tali sepatuku membeku jadi kaca garam putih yang rapuh dan pecah berbunyi {i}ting{/i}."
+
+# game/story/chapter1.rpy:103
+translate indonesian chapter1_start_4bb1119a:
+
+    # vespera "Stop, you absolute turnip! That's an uncalibrated planar wake—step two inches further without an astrolabe lock and your shins will arrive in Tuesday while your torso stays in Cindervale!"
+    vespera "Berhenti, dasar lobak kepentok! Itu pusaran lintas-dimensi yang belum dikalibrasi—maju dua inci lagi tanpa kunci astrolab, tulang keringmu bakal nyampe di hari Selasa sementara badanmu ketinggalan di Cindervale!"
+
+# game/story/chapter1.rpy:104
+translate indonesian chapter1_start_9a110de3:
+
+    # narrator "Vespera hauls me backward by the hood of my windbreaker like an errant cat."
+    narrator "Vespera menyeretku mundur dengan menarik tudung jaketku persis seperti mengangkat anak kucing nakal."
+
+# game/story/chapter1.rpy:108
+translate indonesian chapter1_start_ffd3015b:
+
+    # leo "...Okay! Point taken! We wait for the soldering iron!"
+    leo "...Oke! Paham! Kita tunggu besinya disolder dulu!"
+
+# game/story/chapter1.rpy:530
+translate indonesian ch1_aqueduct_climax_ca8ef273:
+
+    # thought "My knees are shaking so hard my dryer token is jingling in my pocket. Every instinct from twenty-six years says {shake}step back{/shake} and let the real adults handle it."
+    thought "Lututku gemetar hebat sampai koin pengering di sakuku ikut berbunyi. Setiap naluri dari dua puluh enam tahun hidupku menyuruhku {shake}mundur{/shake} dan membiarkan orang dewasa sungguhan yang mengurusnya."
+
+# game/story/chapter1.rpy:582
+translate indonesian ch1_aqueduct_climax_cdd4f6f9:
+
+    # narrator "For one terrifying second I forget the name of my {glitch}elementary school{/glitch}—then Vespera kicks the emergency ground-spike home, snuffing the rift in a cloud of white steam."
+    narrator "Selama satu detik yang mengerikan, aku lupa nama {glitch}sekolah dasarku{/glitch} sendiri—sebelum Vespera menendang pasak bumi darurat hingga tertancap, memadamkan celah itu dalam kepulan uap putih."
+
+translate indonesian strings:
+
+    # game/story/chapter1.rpy:69
+    old "Turn around and march back toward the ridge. \"Nope. Keep your salt apocalypse—I'm climbing back into my puddle.\""
+    new "Balik badan dan berjalan kembali ke arah punggung bukit. \"Nggak deh. Simpan saja kiamat garam kalian—aku mau balik nyebur ke genangan airku.\""
+
 

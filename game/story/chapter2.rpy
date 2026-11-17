@@ -14,7 +14,9 @@ label chapter2_start:
     )
 
     play music audio.bgm_mystery fadein 1.5
-    scene bg crooked_lantern_inn
+    $ set_atmosphere(None)
+    $ clear_panic()
+    scene bg crooked_lantern_inn at cam_reset
     with Dissolve(1.0)
 
     narrator "By nine o'clock, the Crooked Lantern's back parlor has been requisitioned into an impromptu war-room. Outside, Ashen Vigil sentries pace the wet cobbles in disciplined pairs."
@@ -25,6 +27,10 @@ label chapter2_start:
     with Dissolve(0.4)
 
     cassian "Look at the survey charcoal, Broker Kael. I am not here to arrest you for an unlicensed Recall, nor to fine Master Sato for his... unusual footwear."
+    if has_flag("tried_to_walk_back"):
+        vespera "Don't look at me, Marshal—half his left shoelace is still crystal glass from when he tried to march back into Tuesday."
+    if has_flag("aqueduct_scar"):
+        cassian "Though I see from the salve on Master Sato's knuckles that the Aqueduct surge bit hard enough to draw blood—and graze his Tether."
     narrator "High Marshal Cassian Vey unrolls a salt-stained map of northern Cindervale. His voice isn't booming or theatrical; he sounds like an ER surgeon on hour thirty-six."
     cassian "Twenty years ago, I carried the Sixth Paragon's shield to Fort Bastion. I watched a nineteen-year-old boy from Osaka pour every memory in his skull into that cliffside so thirty thousand refugees could live."
     cassian "Tonight, that seal is failing. If the Hollow Tide breaks into the valley before winter, Thornwick and six charter villages vanish."
@@ -38,16 +44,28 @@ label chapter2_start:
     narrator "Seraphina reaches for a pewter mug of Master Orin's hot herbal water, pauses, and frowns faintly at the saucer."
     sera "Innkeeper—do you have a slice of... of that sour yellow citrus? From home. Round, dimpled peel, goes in hot tea when your throat hurts..."
 
-    show sera fragile at stage_center
+    stop music fadeout 0.2
+    play sound audio.sfx_static
+    scene bg crooked_lantern_inn at cam_closeup
+    show cassian neutral at stage_left
+    show vespera sharp at stage_right
+    show sera fragile at stage_center, sprite_glitch_jolt
+    $ set_panic(2, ["LEXICON ENTRY: [MISSING]", "CITRUS_NOUN: ERASED", "ASTRAL BLEED: 14%"], sfx="tinnitus")
     narrator "Silence drops over the table like lead."
     narrator "Her fingers tighten around the porcelain handle until her knuckles blanch. Beside her collar, two tiny motes of silver Starlight flicker—and vanish."
 
-    thought "She just forgot the word 'lemon.' She's twenty-one years old, speaking English, and the magic literally ate the word 'lemon' out of her head."
+    thought "She just forgot the word {glitch}'lemon.'{/glitch} She's twenty-one years old, speaking English, and the magic literally ate the word {glitch}'lemon'{/glitch} out of her head."
 
     sera "...Never mind. Plain water is fine."
 
     menu:
         "Quietly say, \"Lemon. With a spoonful of cheap honey in a chipped mug.\" (Without pity or smugness)":
+            $ clear_panic()
+            scene bg crooked_lantern_inn at cam_reset
+            show cassian neutral at stage_left
+            show sera fragile at stage_center
+            show vespera sharp at stage_right
+            play music audio.bgm_mystery fadein 1.5
             $ change_stat("empathy", 1, "Returned a stolen word without humiliating her.")
             $ change_affinity("sera", 2, "Startled that you didn't gloat.")
             $ change_affinity("cassian", 1, "Noted your quiet compassion.")
@@ -57,17 +75,27 @@ label chapter2_start:
             sera "...Right. Lemon. Obviously. I've been speaking High Aurelian all week."
 
         "Confront Marshal Cassian directly: \"You see what that magic is doing to her! You can't feed another person to a furnace!\"":
+            $ clear_panic()
+            scene bg crooked_lantern_inn at cam_reset
+            show cassian weary at stage_left
+            show sera fragile at stage_center
+            show vespera sharp at stage_right
+            play music audio.bgm_mystery fadein 1.5
             $ change_stat("courage", 1, "Stood up to a High Marshal of the Vigil.")
             $ change_affinity("vespera", 2, "Backed her argument without flinching.")
             $ change_affinity("cassian", 1, "Respected your moral spine—even while disagreeing.")
-            show cassian weary at stage_left
             cassian "Do you think I sleep well, Master Sato? My late brother's eight-year-old daughter lives in Bastion Ward Three. Tell me what math saves both Envoy Lin {i}and{/i} thirty thousand sleeping families, and I will kneel to you myself."
 
         "Study Cassian's map and ask Vespera: \"Wait—if the Aqueduct copper-spade grounded a small seam, couldn't a bigger array ground Bastion?\"":
+            $ clear_panic()
+            scene bg crooked_lantern_inn at cam_reset
+            show cassian neutral at stage_left
+            show sera fragile at stage_center
+            show vespera neutral at stage_right
+            play music audio.bgm_mystery fadein 1.5
             $ change_stat("intelligence", 1, "Connected municipal Root-craft to the northern seal.")
             $ change_affinity("vespera", 1, "Followed her exact engineering hunch.")
             $ change_affinity("cassian", 1, "Intrigued by a practical question.")
-            show vespera neutral at stage_right
             vespera "Give the clerk a gold star. If we had the First Era's Original Calibration Plate from the Sunken Archive, a distributed copper array {i}could{/i} bleed pressure off the Crucible without cooking a human brain."
 
     show cassian stern at stage_left
@@ -89,8 +117,9 @@ label chapter2_start:
     ## NIGHT WATCH SCENE 2A: SERAPHINA IN THE RAIN-MIST
     ## ------------------------------------------------------------------------
     $ current_location_name = "Outside the Conservatory • 11:30 PM"
+    $ set_atmosphere("rain")
     play music audio.bgm_conservatory fadein 1.4
-    scene bg orin_conservatory
+    scene bg orin_conservatory at cam_reset
     with Dissolve(0.8)
 
     narrator "Near midnight, unable to sleep on the inn's straw cot, I step out behind the Conservatory eaves—and nearly walk straight into a rapier-thin beam of cold starlight."
@@ -131,6 +160,7 @@ label chapter2_start:
             sera "...God, I hate that you sound like my older sister. Get some sleep, Sato. If you slow me down in the Archive tomorrow, I won't carry you."
 
         "\"Teach me how you channel Starlight. Even a little. If things go wrong tomorrow, a garden spade won't be enough.\"":
+            $ set_flag("took_sera_starlight")
             $ change_resonance(18, "Invited raw Astral Resonance into your veins.")
             $ change_tether(-10, "What color was your childhood bicycle? ...Gone.")
             $ change_stat("strength", 2, "Astral surge hardened your strike.")
@@ -138,15 +168,18 @@ label chapter2_start:
             show sera neutral at stage_right
             sera "...Careful what you ask for. Hold out your palm."
             play sound audio.sfx_rift
+            $ set_panic(3, ["CHILDHOOD_BICYCLE: [DELETED]", "STRENGTH +2 // TETHER -10"], sfx="tinnitus")
             with flash_astral
-            narrator "Cold violet fire threads into my wrist. Instantly my shoulders feel lighter, sharper, fearless—and when I try to picture the bicycle I rode in third grade, there's only white static."
+            narrator "Cold violet fire threads into my wrist. Instantly my shoulders feel lighter, sharper, fearless—and when I try to picture the bicycle I rode in third grade, there's only {glitch}white static{/glitch}."
+            $ clear_panic()
 
     ## ------------------------------------------------------------------------
     ## NIGHT WATCH SCENE 2B: VESPERA ON THE OAKHAVEN BLUFF (+ CLOVER #2!)
     ## ------------------------------------------------------------------------
     $ current_location_name = "Oakhaven Overlook • Midnight"
+    $ set_atmosphere("salt_ash")
     play ambience audio.amb_wind fadein 1.2
-    scene bg salt_ruins
+    scene bg salt_ruins at cam_reset
     with Dissolve(0.9)
 
     show leo neutral at stage_left
@@ -180,6 +213,7 @@ label chapter2_start:
             $ change_affinity("vespera", 2, "Quietly pulled the oversized nylon collar up against the wind.")
             vespera "...What even is this fabric, woven frog-skin? It blocks wind better than oiled wool. ...Thanks, Question-Mark."
 
+    $ set_atmosphere(None)
     stop ambience fadeout 1.0
     stop music fadeout 1.0
     pause 0.5

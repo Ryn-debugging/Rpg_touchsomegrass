@@ -36,11 +36,6 @@ translate indonesian prologue_start_a4d76ad4:
     # narrator "A crayon-gold cape flutters down into a puddle beside my nose and immediately turns soggy gray."
     narrator "Jubah emas dari krayon melayang jatuh ke kubangan air di samping hidungku, lalu seketika basah kuyup dan berubah kelabu."
 
-# game/story/prologue.rpy:34
-translate indonesian prologue_start_ca24c791:
-
-    # thought "Don't cry. If your shoulders shake, they stay another five minutes. That's the rule. Statues don't get kicked twice."
-    thought "Jangan nangis. Kalau pundakmu gemetar, mereka bakal nambah lima menit lagi buat ngerjain kamu. Begitu aturannya. Patung batu nggak bakal ditendang dua kali."
 
 # game/story/prologue.rpy:36
 translate indonesian prologue_start_2faf031e:
@@ -331,4 +326,11 @@ translate indonesian strings:
     # game/story/prologue.rpy:100
     old "Pull the battered hero sketchbook out from under the radiator for a minute."
     new "Narik buku gambar pahlawan yang usang itu dari kolong radiator sebentar."
+
+# game/story/prologue.rpy:40
+translate indonesian prologue_start_de9b7ab3:
+
+    # thought "{shake}Don't cry.{/shake} If your shoulders shake, they stay another five minutes. That's the rule. {echo}Statues don't get kicked twice.{/echo}"
+    thought "{shake}Jangan nangis.{/shake} Kalau bahumu gemetar, mereka bakal bertahan lima menit lagi. Itu aturannya. {echo}Patung nggak bakal ditendang dua kali.{/echo}"
+
 
